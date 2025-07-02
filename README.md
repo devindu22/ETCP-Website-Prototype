@@ -6,7 +6,7 @@
 #### Prepared For: ETCP Board of Directors / Academic Evaluation
 #### Purpose: This document provides a comprehensive technical and functional overview of the Eco-Tourism Cloud Platform (ETCP) website prototype. It details the implemented user interface (UI) and user experience (UX) elements, aligns them with the strategic vision outlined in the project brief, and identifies areas for future development towards a fully functional platform.
 
-1. Project Overview: Eco-Tourism Cloud Platform (ETCP)
+### 1. Project Overview: Eco-Tourism Cloud Platform (ETCP)
    
 The Eco-Tourism Cloud Platform (ETCP) is an innovative cloud-based solution designed to revolutionize how eco-conscious travelers discover, plan, and engage with sustainable tourism experiences globally. Developed by a visionary Sri Lankan start-up, ETCP aims to foster a deeper connection between users and the natural world, promoting eco-friendly practices and supporting local communities.
 
@@ -23,7 +23,7 @@ ETCP Voyager: An interactive map and planner for crafting eco-tourism itinerarie
 
 Settings & Personalization: Features allowing users to customize their ETCP experience, including visual themes, language preferences, accessibility options, and payment/subscription management.
 
-2. Website Architecture & Technologies
+### 2. Website Architecture & Technologies
 
 The current ETCP website is implemented as a static frontend prototype, primarily focusing on demonstrating the user interface and user experience flows. It does not include backend logic, database integration, or live API calls.
 
@@ -53,7 +53,7 @@ Intuitive Navigation: A fixed top navigation bar with clear links facilitates ea
 
 Engaging Interactivity: Subtle CSS animations (fade-in, slide-in) triggered by JavaScript's Intersection Observer enhance user engagement without being distracting.
 
-3. Detailed Page Analysis
+### 3. Detailed Page Analysis
 
 This section provides a detailed breakdown of each page within the ETCP website prototype, highlighting its purpose, implemented UI/UX elements, and alignment with the project brief.
 
@@ -439,7 +439,7 @@ User Management: Full profile editing, password changes, and account linking in 
 
 [Screenshot: Dashboard - Mobile View (Sidebar collapsed/scrolling)]
 
-4. Cross-Cutting Concerns
+### 4. Cross-Cutting Concerns
 
 4.1 Responsiveness
 
@@ -483,7 +483,7 @@ Design Elements: Rounded corners on cards, buttons, and input fields, along with
 
 Iconography: Font Awesome icons are used consistently to enhance visual communication and user guidance.
 
-5. Prototype Limitations & Future Enhancements
+### 5. Prototype Limitations & Future Enhancements
    
 The current ETCP website is a User Interface and User Experience prototype, designed to visualize the platform's concept, test design choices, and gather feedback on usability. As such, it has inherent limitations as a fully functional web application.
 
@@ -525,8 +525,8 @@ Feedback Integration: Implement the feedback form to capture user input and inte
 
 Error & Loading States: Design and implement clear UI feedback for network errors, loading times, and form submission statuses.
 
-6. Conclusion
-7. 
+### 6. Conclusion
+
 The ETCP website prototype effectively demonstrates the envisioned user interface and experience for an eco-tourism platform. It showcases a clean, responsive design and intuitive navigation, providing a strong visual foundation for the "Eco-Discovery Hub," "Eco-Journeys," and the "Eco-Explorer Network" registration.
 
 While the current implementation is frontend-focused, it serves as an invaluable tool for conducting usability testing and gathering critical user feedback on the design and interaction flows. The identified future enhancements highlight the necessary steps to evolve this prototype into a fully functional, robust, and impactful Eco-Tourism Cloud Platform, aligning with the company's corporate goal of connecting eco-conscious travelers with sustainable experiences worldwide.
