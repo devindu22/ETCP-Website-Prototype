@@ -240,6 +240,7 @@ Sustainability Details: Fields for sustainability certifications and practices w
 [Screenshot: Register Your Property - Upload Sections]
 
 3.4 About Us Page (about.html)
+
 Purpose: To inform users about ETCP's mission, values, unique selling propositions, and commitment to sustainability and local communities.
 
 Key UI Components & Layout:
@@ -279,6 +280,7 @@ Alignment: This page effectively communicates the brand's story and values, alig
 Future Enhancements: Content could be managed via a CMS. Could include dynamic elements like testimonials or team member profiles.
 
 [Screenshot: About Us - Full View]
+
 [Screenshot: About Us - Our Mission Section]
 
 3.5 Sign In Page (signin.html)
@@ -348,8 +350,11 @@ Social Login Integration: Make Google, Apple, and Facebook login buttons fully f
 Error Handling: More specific error messages from the backend (e.g., "User not found," "Incorrect password").
 
 [Screenshot: Sign In Page - Full View]
+
 [Screenshot: Sign In Page - Email Input & Buttons]
+
 3.6 Dashboard Page (dashboard.html - Eco-Journeys)
+
 Purpose: To serve as the personalized user dashboard, allowing users to manage their bookings, subscriptions, and access other account-related features, forming the core of "Eco-Journeys."
 
 Key UI Components & Layout:
@@ -425,15 +430,23 @@ ETCP Voyager Integration: The "Sustainability impact" section would integrate wi
 User Management: Full profile editing, password changes, and account linking in "Settings."
 
 [Screenshot: Dashboard - Full Desktop View]
+
 [Screenshot: Dashboard - User Profile & Sidebar Menu]
+
 [Screenshot: Dashboard - My Bookings Table]
+
 [Screenshot: Dashboard - Recommendations & Offers]
+
 [Screenshot: Dashboard - Mobile View (Sidebar collapsed/scrolling)]
+
 4. Cross-Cutting Concerns
+
 4.1 Responsiveness
+
 The entire website prototype is built with a mobile-first approach, leveraging Bootstrap's responsive grid system and extensive custom media queries. This ensures that the layout, typography, and interactive elements adapt seamlessly across various screen sizes, from mobile phones to large desktop displays. Specific adjustments are evident in the main search bar on plan.html, the dashboard's sidebar, and general element stacking.
 
 4.2 Accessibility
+
 Basic accessibility considerations have been integrated:
 
 Semantic HTML5: Use of elements like <nav>, <main>, <section>, <form>, <label>, <table>, <thead>, <tbody>, <th> improves document structure and readability for assistive technologies.
@@ -447,6 +460,7 @@ Form Labels: All input fields are correctly associated with <label> elements usi
 Keyboard Navigation: Standard HTML elements and Bootstrap components provide inherent keyboard focus and interaction. Custom focus styles on form inputs enhance visibility for keyboard users.
 
 4.3 Frontend Performance
+
 CDN Usage: External libraries (Bootstrap, Font Awesome, Google Fonts) are loaded from Content Delivery Networks (CDNs), leveraging browser caching and distributed servers for faster delivery.
 
 JavaScript Placement: All custom JavaScript is placed at the end of the <body> tag, preventing render-blocking and allowing the HTML content to load and display before scripts execute.
@@ -458,6 +472,7 @@ Inline CSS/JS: While convenient for prototyping, for a production site, external
 Image Optimization: While not directly controllable within the HTML, the choice of image formats and compression would be a critical performance consideration for a live site.
 
 4.4 Branding & Visual Consistency
+
 The prototype effectively establishes a consistent brand identity:
 
 Color Palette: A cohesive green-based color scheme (--primary-green, --hover-green, various light green tints) is used throughout, reinforcing the "eco" theme.
@@ -469,9 +484,11 @@ Design Elements: Rounded corners on cards, buttons, and input fields, along with
 Iconography: Font Awesome icons are used consistently to enhance visual communication and user guidance.
 
 5. Prototype Limitations & Future Enhancements
+   
 The current ETCP website is a User Interface and User Experience prototype, designed to visualize the platform's concept, test design choices, and gather feedback on usability. As such, it has inherent limitations as a fully functional web application.
 
 5.1 Key Backend Dependencies & Missing Functionalities
+
 The following core features, outlined in the project brief, are not implemented in this frontend prototype and represent significant backend development requirements:
 
 User Authentication & Authorization: Real user sign-in, account creation, password management, and secure session handling.
@@ -495,6 +512,7 @@ Recommendation Engine: The "Discover Similar" and "Recommendations" features lac
 Notification System: Real-time or push notifications are not implemented.
 
 5.2 Areas for Future UI/UX Iteration (Based on Assignment Context)
+
 Beyond backend integration, the prototype serves as a foundation for further UI/UX refinement, as per the assignment's iterative design methodology:
 
 Streamlining Booking Process: Once backend is integrated, focus on optimizing the user flow from discovery to confirmed booking.
@@ -508,6 +526,7 @@ Feedback Integration: Implement the feedback form to capture user input and inte
 Error & Loading States: Design and implement clear UI feedback for network errors, loading times, and form submission statuses.
 
 6. Conclusion
+7. 
 The ETCP website prototype effectively demonstrates the envisioned user interface and experience for an eco-tourism platform. It showcases a clean, responsive design and intuitive navigation, providing a strong visual foundation for the "Eco-Discovery Hub," "Eco-Journeys," and the "Eco-Explorer Network" registration.
 
 While the current implementation is frontend-focused, it serves as an invaluable tool for conducting usability testing and gathering critical user feedback on the design and interaction flows. The identified future enhancements highlight the necessary steps to evolve this prototype into a fully functional, robust, and impactful Eco-Tourism Cloud Platform, aligning with the company's corporate goal of connecting eco-conscious travelers with sustainable experiences worldwide.
