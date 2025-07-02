@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign in | ETCP</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="icon" href="img/favicon_io/favicon.ico" type="image/x-icon">
+
+    <style>
+        /* ===== Variables ===== */
+        :root {
+            --primary-green: #28a745;
+            --navbar-bg: #28a745;
+            --text-dark: #333;
+            --hover-green: #218838;
+            --input-border-radius: 0.5rem;
+            --card-border-radius: 1rem;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            padding-top: 70px;
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        a { text-decoration: none; }
+
+        /* ===== Navbar ===== */
+        .navbar {
+            background-color: var(--navbar-bg);
+            transition: padding 0.3s ease;
+            padding: 1rem;
+        }
+        .navbar.navbar-shrink {
+            padding: 0.25rem 1rem;
+        }
+        .navbar .navbar-brand img {
+            height: 40px;
+        }
+        .nav-link {
+            color: white !important;
+            position: relative;
+            padding: 0.5rem 0.75rem;
+            transition: color 0.2s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link:hover {
+            color: #e0e0e0 !important;
+        }
+        .nav-link.active {
+            font-weight: 600;
+            color: aqua !important; /* Highlight active link */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Subtle glow effect */
+        }
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        /* ===== Sign-in Section ===== */
+        .signin-section {
+            background: linear-gradient(
+            to bottom,
+            var(--navbar-bg),
+            rgba(255, 255, 255, 0) 40%,
+            #fff 80%
+            );
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+        /* Keyframes for fade-in + slide-down */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .sign-card {
+            background-color: #fff;
+            border-radius: var(--card-border-radius);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            max-width: 550px;
+            width: 100%;
+            margin-top: 2rem;
+
+            /* Fade-in animation */
+            opacity: 0;
+            animation: fadeInDown 1s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+        .sign-card h2 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .sign-card p.intro {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #444;
+        }
+        .form-control {
+            border: 1px solid var(--primary-green);
+            border-radius: var(--input-border-radius);
+        }
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+        }
+        .btn-continue {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+            color: white;
+            border-radius: var(--input-border-radius);
+            padding: 0.75rem;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .btn-continue:hover {
+            background-color: var(--hover-green);
+            border-color: var(--hover-green);
+        }
+        .divider-with-text {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        .divider-with-text::before,
+        .divider-with-text::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #ccc;
+        }
+        .divider-with-text:not(:empty)::before {
+            margin-right: 0.75em;
+        }
+        .divider-with-text:not(:empty)::after {
+            margin-left: 0.75em;
+        }
+        .divider-with-text span {
+            font-size: 0.95rem;
+            color: #555;
+        }
+        .social-btn {
+            border: 1px solid var(--primary-green);
+            border-radius: var(--input-border-radius);
+            width: 60px;
+            height: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+            margin: 0 0.5rem;
+        }
+        .social-btn i {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+        }
+        .social-btn:hover {
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        .terms-text {
+            font-size: 0.85rem;
+            color: #555;
+            text-align: center;
+            margin-top: 1.5rem;
+            line-height: 1.4;
+        }
+        .terms-text a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .terms-text a:hover {
+            color: var(--hover-green);
+            text-decoration: underline;
+        }
+        .sign-footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #555;
+        }
+        .sign-footer strong {
+            color: var(--text-dark);
+        }
+
+        /* Message display styles */
+        .feedback-message {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+
+        .feedback-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feedback-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .feedback-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ===== Navbar ===== -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="ETCP Logo" />
+            </a>
+            <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarContent"
+            aria-controls="navbarContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.html">Register your property</a></li>
+                <li class="nav-item"><a class="nav-link" href="plan.html">Plan your trip</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <img src="img/flag.png" alt="Language" style="height:24px; border-radius:50%;" />
+                    </a>
+                </li>
+                <li class="nav-item"><a class="nav-link active" href="signin.html">Sign in</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== Sign-in Section ===== -->
+<section class="signin-section">
+    <div
+    class="container d-flex justify-content-center align-items-start"
+    style="min-height: calc(100vh - 70px);"
+    >
+    <div class="sign-card">
+        <h2>Sign in or create an account</h2>
+        <p class="intro">
+            You can sign in using your ETCP.com account to access our services.
+        </p>
+
+        <!-- Email form -->
+        <form id="emailForm" novalidate>
+            <div class="mb-3">
+                <label for="emailInput" class="form-label">Email address</label>
+                <input
+                type="email"
+                class="form-control"
+                id="emailInput"
+                placeholder="Enter your email address"
+                required
+                />
+                <div class="invalid-feedback">
+                    Please enter a valid email address.
+                </div>
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn-continue" id="continueBtn" disabled>
+                    Continue with email
+                </button>
+            </div>
+        </form>
+
+        <!-- Message Display Area -->
+        <div id="messageDisplay" class="feedback-message"></div>
+
+        <!-- Divider -->
+        <div class="divider-with-text">
+            <span>or use one of these options</span>
+        </div>
+
+        <!-- Social login buttons -->
+        <div class="d-flex justify-content-center mb-3">
+            <a href="#" class="social-btn" aria-label="Sign in with Google">
+                <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="social-btn" aria-label="Sign in with Apple">
+                <i class="fab fa-apple"></i>
+            </a>
+            <a href="#" class="social-btn" aria-label="Sign in with Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+
+        <!-- Terms text -->
+        <p class="terms-text">
+            By signing in or creating an account, you agree with our
+            <a href="#">Terms &amp; conditions</a> and
+            <a href="#">Privacy statement</a>.
+        </p>
+
+        <!-- Footer text -->
+        <p class="sign-footer">
+            All rights reserved.<br />
+            <strong>Copyright © 2025 ETCP.com™</strong>
+        </p>
+    </div>
+</div>
+</section>
+
+<!-- Bootstrap JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script>
+    // Navbar shrink on scroll
+    const navbar = document.getElementById("mainNavbar");
+    function checkScroll() {
+        if (window.scrollY > 50) {
+            navbar.classList.add("navbar-shrink");
+        } else {
+            navbar.classList.remove("navbar-shrink");
+        }
+    }
+    document.addEventListener("scroll", checkScroll);
+    checkScroll();
+
+    // Email form validation & enable button
+    (function () {
+        const emailInput = document.getElementById("emailInput");
+        const continueBtn = document.getElementById("continueBtn");
+        const emailForm = document.getElementById("emailForm");
+        const messageDisplay = document.getElementById("messageDisplay"); // New: Message display element
+        const correctEmail = "brooke.higgins25@etcp.com"; // The target email for redirection
+
+        // Function to display messages
+        function showMessage(message, type) {
+            messageDisplay.textContent = message;
+            messageDisplay.className = 'feedback-message show'; // Reset and add 'show'
+            messageDisplay.classList.add(type); // 'success' or 'error'
+
+            // Hide message after a few seconds if it's an error
+            if (type === 'error') {
+                setTimeout(() => {
+                    messageDisplay.classList.remove('show');
+                }, 3000); // Hide error message after 3 seconds
+            }
+        }
+
+        // Event listener for email input to enable/disable button
+        emailInput.addEventListener("input", function () {
+            if (emailInput.checkValidity()) {
+                continueBtn.disabled = false;
+            } else {
+                continueBtn.disabled = true;
+            }
+            // Clear message display when user types
+            messageDisplay.classList.remove('show', 'success', 'error');
+            emailInput.classList.remove("is-invalid"); // Remove invalid state on re-typing
+        });
+
+        // Event listener for form submission
+        emailForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // First, check basic browser validation for email format
+            if (!emailInput.checkValidity()) {
+                emailInput.classList.add("is-invalid");
+                showMessage("Please enter a valid email address.", "error");
+                return;
+            }
+
+            // Custom logic for "successful" sign-in based on specific email
+            if (emailInput.value.toLowerCase() === correctEmail.toLowerCase()) {
+                showMessage("Sign-in successful! Redirecting to dashboard...", "success");
+                emailInput.classList.remove("is-invalid"); // Ensure no invalid state on success
+
+                // Simulate successful sign-in and redirect after a short delay
+                setTimeout(() => {
+                    window.location.href = "dashboard.html"; // Redirect to your dashboard page
+                }, 1000); // Redirect after 1 second
+            } else {
+                // If email is valid format but not the target email
+                emailInput.classList.add("is-invalid"); // Mark as invalid for visual feedback
+                showMessage("Invalid email or credentials. Please try again.", "error");
+            }
+        });
+    })();
+</script>
+</body>
+</html>
