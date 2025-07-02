@@ -1,5 +1,3 @@
-![_C__Users_Devindu%20Malshan_Desktop_HND_UEID_Assignment_ETCP%20Design_ETCP%20Website%20Prototype_plan html](https://github.com/user-attachments/assets/9adda58f-e233-4c2b-84be-d30f3fea2076)# ETCP-Website-Prototype
-
 ### **Technical and Functional Documentation: Eco-Tourism Cloud Platform (ETCP) Website Prototype**
 #### **Document Version:** 1.0
 #### **Date:** July 2, 2025
