@@ -1,16 +1,17 @@
 # ETCP-Website-Prototype
 
-### Technical and Functional Documentation: Eco-Tourism Cloud Platform (ETCP) Website Prototype
-#### Document Version: 1.0
-#### Date: July 2, 2025
-#### Prepared For: ETCP Board of Directors / Academic Evaluation
-#### Purpose: This document provides a comprehensive technical and functional overview of the Eco-Tourism Cloud Platform (ETCP) website prototype. It details the implemented user interface (UI) and user experience (UX) elements, aligns them with the strategic vision outlined in the project brief, and identifies areas for future development towards a fully functional platform.
+### **Technical and Functional Documentation: Eco-Tourism Cloud Platform (ETCP) Website Prototype**
+#### **Document Version:** 1.0
+#### **Date:** July 2, 2025
+#### **Prepared For:** ETCP Board of Directors / Academic Evaluation
+#### **Purpose:** This document provides a comprehensive technical and functional overview of the Eco-Tourism Cloud Platform (ETCP) website prototype. It details the implemented user interface (UI) and user experience (UX) elements, aligns them with the strategic vision outlined in the project brief, and identifies areas for future development towards a fully functional platform.
 
 ### 1. Project Overview: Eco-Tourism Cloud Platform (ETCP)
    
 The Eco-Tourism Cloud Platform (ETCP) is an innovative cloud-based solution designed to revolutionize how eco-conscious travelers discover, plan, and engage with sustainable tourism experiences globally. Developed by a visionary Sri Lankan start-up, ETCP aims to foster a deeper connection between users and the natural world, promoting eco-friendly practices and supporting local communities.
 
-1.1 Key Features (from Project Brief)
+**1.1 Key Features (from Project Brief)**
+
 The ETCP vision encompasses several core features:
 
 Eco-Explorer Network (EEN): A community-driven platform for eco-tourism providers to register, publish offerings, manage bookings, view analytics, handle payments, showcase sustainability, and receive feedback.
@@ -27,7 +28,7 @@ Settings & Personalization: Features allowing users to customize their ETCP expe
 
 The current ETCP website is implemented as a static frontend prototype, primarily focusing on demonstrating the user interface and user experience flows. It does not include backend logic, database integration, or live API calls.
 
-2.1 Core Technologies
+**2.1 Core Technologies**
 
 HTML5: Provides the semantic structure and content of all web pages.
 
@@ -41,7 +42,7 @@ Font Awesome 6.4.0: Provides scalable vector icons used throughout the site for 
 
 Google Fonts (Poppins): Ensures consistent and modern typography across the platform.
 
-2.2 Design Principles
+**2.2 Design Principles**
 
 The prototype adheres to several key design principles:
 
@@ -57,11 +58,11 @@ Engaging Interactivity: Subtle CSS animations (fade-in, slide-in) triggered by J
 
 This section provides a detailed breakdown of each page within the ETCP website prototype, highlighting its purpose, implemented UI/UX elements, and alignment with the project brief.
 
-3.1 Home Page (index.html)
+**3.1 Home Page (index.html)**
 
 Purpose: To serve as the primary entry point to the ETCP platform, introducing its mission, showcasing trending destinations, and guiding users towards key functionalities like property registration and trip planning.
 
-Key UI Components & Layout:
+**Key UI Components & Layout:**
 
 Fixed Navbar: Consistent across the site, offering navigation to core pages and a language/sign-in option.
 
@@ -77,7 +78,7 @@ Rewards Box: Encourages user sign-in for benefits.
 
 Footer: Comprehensive site map, social media links, and copyright information.
 
-Core Functionality (as implemented in prototype):
+**Core Functionality (as implemented in prototype):**
 
 Navigation: Links to register.html, plan.html, about.html, and signin.html.
 
@@ -87,7 +88,7 @@ Scroll Animations: Elements like the welcome text, destination cards, and banner
 
 Call-to-Action: Clickable areas for "Explore More" (to plan.html), "Register" (to register.html), and "Sign in" (to signin.html).
 
-Styling Highlights:
+**Styling Highlights:**
 
 Extensive use of --primary-green and linear-gradient backgrounds.
 
@@ -99,7 +100,7 @@ dest-grid uses display: grid for a responsive and visually engaging destination 
 
 blink-1, blink-2, and chase animations for the "Register Banner."
 
-Scenario Alignment & Future Scope:
+**Scenario Alignment & Future Scope:**
 
 Alignment: This page effectively introduces the ETCP concept and visually aligns with the eco-tourism theme. It serves as a good entry point to the "Eco-Discovery Hub" (plan.html) and "Eco-Explorer Network" (register.html).
 
@@ -115,7 +116,7 @@ Future Enhancements: In a full system, the "Trending Destinations" would be dyna
 
 Purpose: To enable users to search, filter, and discover eco-tourism experiences based on various criteria, serving as the primary interface for the "Eco-Discovery Hub."
 
-Key UI Components & Layout:
+**Key UI Components & Layout:**
 
 Main Search Pill: A prominent, sticky search bar at the top with fields for location, dates, and guests.
 
@@ -129,7 +130,7 @@ Recommendations & Offers: Sections for suggested destinations and promotions.
 
 "Show on Map" Section: A placeholder for the "ETCP Voyager" feature.
 
-Core Functionality (as implemented in prototype):
+**Core Functionality (as implemented in prototype):**
 
 Client-Side Filtering: All filters (location, budget range slider, checkboxes, radio buttons) dynamically filter a static allProperties JavaScript array.
 
@@ -145,7 +146,7 @@ Wishlist Button: Adds/removes property IDs to/from a client-side wishlistItems a
 
 Dynamic Content Insertion: Inserts static "Offers" and "Ad" cards at specific intervals within the property listings.
 
-Styling Highlights:
+**Styling Highlights:**
 
 Customized Bootstrap form controls and input fields.
 
@@ -159,11 +160,11 @@ Distinctive styling for result-card, recommendation-card, and offer-card.
 
 Detailed media queries for mobile responsiveness, especially for the search pill and result card layouts.
 
-Scenario Alignment & Future Scope:
+**Scenario Alignment & Future Scope:**
 
 Alignment: This page is a strong visual and interactive prototype for the "Eco-Discovery Hub," demonstrating comprehensive filtering capabilities.
 
-Future Enhancements:
+**Future Enhancements:**
 
 Backend Integration: Property data (allProperties) would be fetched from a database via an API.
 
@@ -185,7 +186,7 @@ Detailed Experience Pages: Clicking on a property card would lead to a dedicated
 
 Purpose: To provide a clear and intuitive interface for eco-tourism providers to register their properties with the ETCP platform, forming the entry point for the "Eco-Explorer Network."
 
-Key UI Components & Layout:
+**Key UI Components & Layout:**
 
 Welcome Section: Introduces ETCP to providers, highlighting benefits, paired with a large image.
 
@@ -195,7 +196,7 @@ Media Upload Sections: Dedicated areas for uploading property photos and videos,
 
 Register Button: A prominent call-to-action to submit the form.
 
-Core Functionality (as implemented in prototype):
+**Core Functionality (as implemented in prototype):**
 
 Form Input: Standard HTML text, tel, and email input fields.
 
@@ -207,7 +208,7 @@ File Upload Placeholders: input type="file" elements are present, but the actual
 
 Scroll Animations: Sections and elements fade and slide into view.
 
-Styling Highlights:
+**Styling Highlights:**
 
 Gradient background for the welcome section.
 
@@ -221,7 +222,7 @@ Scenario Alignment & Future Scope:
 
 Alignment: This page successfully prototypes the initial "register" aspect of the "Eco-Explorer Network."
 
-Future Enhancements:
+**Future Enhancements:**
 
 Backend Integration: Form data and uploaded files would be sent to a server-side API for processing and storage in a database.
 
@@ -239,11 +240,11 @@ Sustainability Details: Fields for sustainability certifications and practices w
 
 [Screenshot: Register Your Property - Upload Sections]
 
-3.4 About Us Page (about.html)
+**3.4 About Us Page (about.html)**
 
 Purpose: To inform users about ETCP's mission, values, unique selling propositions, and commitment to sustainability and local communities.
 
-Key UI Components & Layout:
+**Key UI Components & Layout:**
 
 Standard Navbar & Footer: Consistent with other pages.
 
@@ -255,7 +256,7 @@ List of Unique Features: "What Sets Us Apart" section uses an unordered list to 
 
 Team Banner Image: A wide image representing the ETCP team.
 
-Core Functionality (as implemented in prototype):
+**Core Functionality (as implemented in prototype):**
 
 Navigation: Standard links to other pages.
 
@@ -263,7 +264,7 @@ Navbar Shrink: The navigation bar visually shrinks on scroll.
 
 Scroll Animations: All content sections and list items fade and slide into view.
 
-Styling Highlights:
+**Styling Highlights:**
 
 Consistent section-heading and section-text styles.
 
@@ -273,7 +274,7 @@ Rounded images (img-fluid rounded).
 
 Slightly slower transition for animate-on-scroll for a more deliberate reveal.
 
-Scenario Alignment & Future Scope:
+**Scenario Alignment & Future Scope:**
 
 Alignment: This page effectively communicates the brand's story and values, aligning with the brief's emphasis on eco-consciousness and community support.
 
@@ -283,11 +284,11 @@ Future Enhancements: Content could be managed via a CMS. Could include dynamic e
 
 [Screenshot: About Us - Our Mission Section]
 
-3.5 Sign In Page (signin.html)
+**3.5 Sign In Page (signin.html)**
 
 Purpose: To provide a user-friendly interface for existing users to sign in to their ETCP accounts, serving as the gateway to "Eco-Journeys."
 
-Key UI Components & Layout:
+**Key UI Components & Layout:**
 
 Centralized Sign-in Card: A prominent, visually appealing card positioned centrally on the page.
 
@@ -303,7 +304,7 @@ Terms & Privacy Links: Legal disclaimers.
 
 Copyright Information: Footer text within the card.
 
-Core Functionality (as implemented in prototype):
+**Core Functionality (as implemented in prototype):**
 
 Navbar Shrink: Consistent with other pages.
 
@@ -311,7 +312,7 @@ Email Input Validation: Uses HTML5 type="email" and required for basic browser v
 
 Button Enable/Disable: The "Continue with email" button is disabled until a valid email format is entered.
 
-Simulated Authentication:
+**Simulated Authentication:**
 
 Compares the entered email against a hardcoded correctEmail (brooke.higgins25@etcp.com).
 
@@ -321,7 +322,7 @@ Upon "successful" match, simulates a redirect to dashboard.html after a short de
 
 Animations: The sign-card itself fades and slides down on page load. Messages also animate in/out.
 
-Styling Highlights:
+**Styling Highlights:**
 
 Gradient background for the signin-section.
 
@@ -333,11 +334,11 @@ Styling for the divider-with-text and circular social-btn elements.
 
 Distinctive feedback-message styles for success and error states.
 
-Scenario Alignment & Future Scope:
+**Scenario Alignment & Future Scope:**
 
 Alignment: This page provides a clear UI for user sign-in, aligning with the need for user accounts to access personalized features.
 
-Future Enhancements:
+**Future Enhancements:**
 
 Real Backend Authentication: Integrate with a robust authentication system (e.g., Firebase Auth, OAuth providers) for secure user login and session management.
 
@@ -353,11 +354,11 @@ Error Handling: More specific error messages from the backend (e.g., "User not f
 
 [Screenshot: Sign In Page - Email Input & Buttons]
 
-3.6 Dashboard Page (dashboard.html - Eco-Journeys)
+**3.6 Dashboard Page (dashboard.html - Eco-Journeys)**
 
 Purpose: To serve as the personalized user dashboard, allowing users to manage their bookings, subscriptions, and access other account-related features, forming the core of "Eco-Journeys."
 
-Key UI Components & Layout:
+**Key UI Components & Layout:**
 
 Welcome Modal: A temporary, animated overlay greeting the user on dashboard entry.
 
@@ -377,7 +378,7 @@ Offers Card: A prominent card promoting special deals.
 
 Placeholder Sections: notification, wishlist, subscriptions, sustainability, settings, feedback, and help sections are present with static content or basic UI elements.
 
-Core Functionality (as implemented in prototype):
+**Core Functionality (as implemented in prototype):**
 
 Welcome Modal Animation: Displays an animated "Welcome traveler!" modal on page load, then fades out to reveal the dashboard.
 
@@ -391,7 +392,7 @@ Static Data: All booking, recommendation, and offer data is hardcoded.
 
 Placeholder Interactions: Subscription toggles are present but do not persist state. Action buttons in tables and forms are non-functional placeholders.
 
-Styling Highlights:
+**Styling Highlights:**
 
 Light green background for the dashboard-container and sidebar-bg.
 
@@ -411,11 +412,11 @@ recommendation-card and offer-card with box-shadow and hover effects.
 
 Extensive media queries to transform the two-column layout into a stacked, horizontally-scrolling mobile layout for the sidebar.
 
-Scenario Alignment & Future Scope:
+**Scenario Alignment & Future Scope:**
 
 Alignment: This page provides a strong visual and interactive framework for "Eco-Journeys," demonstrating the personalized dashboard concept. The presence of sections like "Wishlist," "Subscriptions," and "Sustainability impact" directly aligns with the brief.
 
-Future Enhancements:
+**Future Enhancements:**
 
 Backend Integration: All content (user profile, bookings, notifications, wishlist, subscriptions, sustainability data) would be fetched dynamically from a backend database via APIs.
 
@@ -441,15 +442,15 @@ User Management: Full profile editing, password changes, and account linking in 
 
 ### 4. Cross-Cutting Concerns
 
-4.1 Responsiveness
+**4.1 Responsiveness**
 
 The entire website prototype is built with a mobile-first approach, leveraging Bootstrap's responsive grid system and extensive custom media queries. This ensures that the layout, typography, and interactive elements adapt seamlessly across various screen sizes, from mobile phones to large desktop displays. Specific adjustments are evident in the main search bar on plan.html, the dashboard's sidebar, and general element stacking.
 
-4.2 Accessibility
+**4.2 Accessibility**
 
 Basic accessibility considerations have been integrated:
 
-Semantic HTML5: Use of elements like <nav>, <main>, <section>, <form>, <label>, <table>, <thead>, <tbody>, <th> improves document structure and readability for assistive technologies.
+Semantic HTML5: Use of elements like nav, main, section, form, label, table, thead, tbody, th improves document structure and readability for assistive technologies.
 
 alt Attributes: All <img> tags include descriptive alt attributes.
 
@@ -459,7 +460,7 @@ Form Labels: All input fields are correctly associated with <label> elements usi
 
 Keyboard Navigation: Standard HTML elements and Bootstrap components provide inherent keyboard focus and interaction. Custom focus styles on form inputs enhance visibility for keyboard users.
 
-4.3 Frontend Performance
+**4.3 Frontend Performance**
 
 CDN Usage: External libraries (Bootstrap, Font Awesome, Google Fonts) are loaded from Content Delivery Networks (CDNs), leveraging browser caching and distributed servers for faster delivery.
 
@@ -471,7 +472,7 @@ Inline CSS/JS: While convenient for prototyping, for a production site, external
 
 Image Optimization: While not directly controllable within the HTML, the choice of image formats and compression would be a critical performance consideration for a live site.
 
-4.4 Branding & Visual Consistency
+**4.4 Branding & Visual Consistency**
 
 The prototype effectively establishes a consistent brand identity:
 
@@ -487,7 +488,7 @@ Iconography: Font Awesome icons are used consistently to enhance visual communic
    
 The current ETCP website is a User Interface and User Experience prototype, designed to visualize the platform's concept, test design choices, and gather feedback on usability. As such, it has inherent limitations as a fully functional web application.
 
-5.1 Key Backend Dependencies & Missing Functionalities
+**5.1 Key Backend Dependencies & Missing Functionalities**
 
 The following core features, outlined in the project brief, are not implemented in this frontend prototype and represent significant backend development requirements:
 
@@ -511,7 +512,7 @@ Recommendation Engine: The "Discover Similar" and "Recommendations" features lac
 
 Notification System: Real-time or push notifications are not implemented.
 
-5.2 Areas for Future UI/UX Iteration (Based on Assignment Context)
+**5.2 Areas for Future UI/UX Iteration (Based on Assignment Context)**
 
 Beyond backend integration, the prototype serves as a foundation for further UI/UX refinement, as per the assignment's iterative design methodology:
 
