@@ -1,4 +1,4 @@
-# ETCP-Website-Prototype
+![_C__Users_Devindu%20Malshan_Desktop_HND_UEID_Assignment_ETCP%20Design_ETCP%20Website%20Prototype_plan html](https://github.com/user-attachments/assets/9adda58f-e233-4c2b-84be-d30f3fea2076)# ETCP-Website-Prototype
 
 ### **Technical and Functional Documentation: Eco-Tourism Cloud Platform (ETCP) Website Prototype**
 #### **Document Version:** 1.0
@@ -106,21 +106,21 @@ Alignment: This page effectively introduces the ETCP concept and visually aligns
 
 Future Enhancements: In a full system, the "Trending Destinations" would be dynamically populated from a database, potentially personalized. The "Rewards" section would integrate with a real user account system.
 
-Home Page - Full View
+**Home Page - Full View**
 
-Figma design
+**Figma design**
 
 ![Home](https://github.com/user-attachments/assets/0ad61727-aec2-4d51-9cbe-14f7552e7382)
 
-Web design
+**Web design**
 
 ![_C__Users_Devindu%20Malshan_Desktop_HND_UEID_Assignment_ETCP%20Design_ETCP%20Website%20Prototype_index html](https://github.com/user-attachments/assets/94d658ce-be1b-44e8-be49-e202bd026c26)
 
-Home Page - Trending Destinations Grid
+**Home Page - Trending Destinations Grid**
 
 ![Screenshot 2025-07-02 120733](https://github.com/user-attachments/assets/c047b037-fb30-4293-a0f2-ea136c4cb9ca)
 
-Home Page - Register Banner
+**Home Page - Register Banner**
 
 ![Screenshot 2025-07-02 120834](https://github.com/user-attachments/assets/c0e14a62-cf3e-4808-8dcc-bb741eeb9e7e)
 
@@ -188,13 +188,19 @@ ETCP Voyager Integration: The "Show on map" would become a fully interactive map
 
 Detailed Experience Pages: Clicking on a property card would lead to a dedicated page with more information, including sustainability practices and reviews.
 
-[Screenshot: Plan Your Trip - Main Search & Filters]
+**Plan Your Trip - Main Search & Filters**
 
-[Screenshot: Plan Your Trip - Property Listings (Grid View)]
+![_C__Users_Devindu%20Malshan_Desktop_HND_UEID_Assignment_ETCP%20Design_ETCP%20Website%20Prototype_plan html](https://github.com/user-attachments/assets/84310c8d-abff-4ce7-a534-a7e079c01564)
 
-[Screenshot: Plan Your Trip - Property Listings (List View)]
+**Plan Your Trip - Property Listings (List View)**
 
-3.3 Register Your Property Page (register.html - Eco-Explorer Network)
+![Screenshot 2025-07-02 121215](https://github.com/user-attachments/assets/ff3141e8-bb87-4341-acff-4f98b3dc63d4)
+
+**Plan Your Trip - Property Listings (Grid View)**
+
+![Screenshot 2025-07-02 121230](https://github.com/user-attachments/assets/dccce180-4997-45e0-a516-db1550a6deee)
+
+**3.3 Register Your Property Page (register.html - Eco-Explorer Network)**
 
 Purpose: To provide a clear and intuitive interface for eco-tourism providers to register their properties with the ETCP platform, forming the entry point for the "Eco-Explorer Network."
 
@@ -230,7 +236,7 @@ Dashed-border upload-box elements with centered Font Awesome icons for visual ap
 
 Responsive layout for form fields and upload sections.
 
-Scenario Alignment & Future Scope:
+**Scenario Alignment & Future Scope:**
 
 Alignment: This page successfully prototypes the initial "register" aspect of the "Eco-Explorer Network."
 
@@ -246,11 +252,20 @@ Provider Dashboard: After registration, providers would access a dedicated dashb
 
 Sustainability Details: Fields for sustainability certifications and practices would be added.
 
-[Screenshot: Register Your Property - Full View]
+**Register Your Property - Full View**
 
-[Screenshot: Register Your Property - Registration Form Fields]
+![Screenshot 2025-07-02 121630](https://github.com/user-attachments/assets/89f9d8d7-70c3-4eb8-a9a8-9a59d34b39fd)
+![Screenshot 2025-07-02 121717](https://github.com/user-attachments/assets/4737f66f-fb4e-40bb-98da-43ae4be88af3)
+![Screenshot 2025-07-02 121801](https://github.com/user-attachments/assets/6b15da01-64bd-4342-971c-36e0ff16669d)
 
-[Screenshot: Register Your Property - Upload Sections]
+**Register Your Property - Registration Form Fields**
+
+![Screenshot 2025-07-02 121900](https://github.com/user-attachments/assets/df1c543f-2fe6-4b34-9feb-1e965f71c702)
+
+**Register Your Property - Upload Sections**
+
+![Screenshot 2025-07-02 121939](https://github.com/user-attachments/assets/700bd598-40ff-4200-84df-ffcddf14d606)
+
 
 **3.4 About Us Page (about.html)**
 
@@ -292,9 +307,17 @@ Alignment: This page effectively communicates the brand's story and values, alig
 
 Future Enhancements: Content could be managed via a CMS. Could include dynamic elements like testimonials or team member profiles.
 
-[Screenshot: About Us - Full View]
+**About Us - Full View**
 
-[Screenshot: About Us - Our Mission Section]
+![Screenshot 2025-07-02 122035](https://github.com/user-attachments/assets/02b1be5b-fd48-4538-804b-7a967a9ba2e4)
+![Screenshot 2025-07-02 122057](https://github.com/user-attachments/assets/a0127125-51c3-4d69-aa7b-f2b38458e83c)
+![Screenshot 2025-07-02 122115](https://github.com/user-attachments/assets/abe177d3-9f25-4f49-a530-dddc95085fc7)
+![Screenshot 2025-07-02 122144](https://github.com/user-attachments/assets/fe61de6d-3091-45b1-bd54-f13af359ab22)
+
+**About Us - Our Mission Section**
+
+![Screenshot 2025-07-02 122233](https://github.com/user-attachments/assets/306b5183-0552-41ad-9601-b9e36587f5d9)
+
 
 **3.5 Sign In Page (signin.html)**
 
@@ -362,9 +385,13 @@ Social Login Integration: Make Google, Apple, and Facebook login buttons fully f
 
 Error Handling: More specific error messages from the backend (e.g., "User not found," "Incorrect password").
 
-[Screenshot: Sign In Page - Full View]
+**Sign In Page - Full View**
 
-[Screenshot: Sign In Page - Email Input & Buttons]
+![_C__Users_Devindu%20Malshan_Desktop_HND_UEID_Assignment_ETCP%20Design_ETCP%20Website%20Prototype_signin html](https://github.com/user-attachments/assets/0abf12a9-9e82-40c5-8d7f-d89c711db994)
+
+**Sign In Page - Email Input & Buttons**
+
+![Screenshot 2025-07-02 122452](https://github.com/user-attachments/assets/30a11390-8fe7-432b-b687-c339e41fe4e1)
 
 **3.6 Dashboard Page (dashboard.html - Eco-Journeys)**
 
@@ -442,15 +469,25 @@ ETCP Voyager Integration: The "Sustainability impact" section would integrate wi
 
 User Management: Full profile editing, password changes, and account linking in "Settings."
 
-[Screenshot: Dashboard - Full Desktop View]
+**Dashboard - Full Desktop View**
 
-[Screenshot: Dashboard - User Profile & Sidebar Menu]
+![_C__Users_Devindu%20Malshan_Desktop_HND_UEID_Assignment_ETCP%20Design_ETCP%20Website%20Prototype_dashboard html](https://github.com/user-attachments/assets/76f0be76-ed76-4aea-a108-2d483840824b)
 
-[Screenshot: Dashboard - My Bookings Table]
+**Dashboard - User Profile & Sidebar Menu**
 
-[Screenshot: Dashboard - Recommendations & Offers]
+![Screenshot 2025-07-02 122714](https://github.com/user-attachments/assets/0ab61caa-6b12-4d34-9cf3-c302e1b8d27d)
 
-[Screenshot: Dashboard - Mobile View (Sidebar collapsed/scrolling)]
+**Dashboard - My Bookings Table**
+
+![Screenshot 2025-07-02 122820](https://github.com/user-attachments/assets/1af450c6-299d-4226-ae1a-8ca4010e99f7)
+
+**Dashboard - Recommendations & Offers**
+
+![Screenshot 2025-07-02 122844](https://github.com/user-attachments/assets/3fd83bd8-e375-4f3e-ac8f-c0eaf72b2174)
+
+**Dashboard - Mobile View (Sidebar collapsed/scrolling)**
+
+![_C__Users_Devindu%20Malshan_Desktop_HND_UEID_Assignment_ETCP%20Design_ETCP%20Website%20Prototype_dashboard html(iPhone 14 Pro Max)](https://github.com/user-attachments/assets/5129b234-ff2d-4cda-8e3f-516161e062ec)
 
 ### 4. Cross-Cutting Concerns
 
