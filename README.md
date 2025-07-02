@@ -106,13 +106,25 @@ Alignment: This page effectively introduces the ETCP concept and visually aligns
 
 Future Enhancements: In a full system, the "Trending Destinations" would be dynamically populated from a database, potentially personalized. The "Rewards" section would integrate with a real user account system.
 
-[Screenshot: Home Page - Full View]
+Home Page - Full View
 
-[Screenshot: Home Page - Trending Destinations Grid]
+Figma design
 
-[Screenshot: Home Page - Register Banner]
+![Home](https://github.com/user-attachments/assets/0ad61727-aec2-4d51-9cbe-14f7552e7382)
 
-3.2 Plan Your Trip Page (plan.html - Eco-Discovery Hub)
+Web design
+
+![_C__Users_Devindu%20Malshan_Desktop_HND_UEID_Assignment_ETCP%20Design_ETCP%20Website%20Prototype_index html](https://github.com/user-attachments/assets/94d658ce-be1b-44e8-be49-e202bd026c26)
+
+Home Page - Trending Destinations Grid
+
+![Screenshot 2025-07-02 120733](https://github.com/user-attachments/assets/c047b037-fb30-4293-a0f2-ea136c4cb9ca)
+
+Home Page - Register Banner
+
+![Screenshot 2025-07-02 120834](https://github.com/user-attachments/assets/c0e14a62-cf3e-4808-8dcc-bb741eeb9e7e)
+
+**3.2 Plan Your Trip Page (plan.html - Eco-Discovery Hub)**
 
 Purpose: To enable users to search, filter, and discover eco-tourism experiences based on various criteria, serving as the primary interface for the "Eco-Discovery Hub."
 
