@@ -12,7 +12,7 @@ The Eco-Tourism Cloud Platform (ETCP) is an innovative cloud-based solution desi
 
 **1.1 Key Features (from Project Brief)**
 
-The ETCP vision encompasses several core features:
+**The ETCP vision encompasses several core features:**
 
 Eco-Explorer Network (EEN): A community-driven platform for eco-tourism providers to register, publish offerings, manage bookings, view analytics, handle payments, showcase sustainability, and receive feedback.
 
