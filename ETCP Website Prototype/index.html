@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home | ETCP</title>
+    
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+    />
+    
+    <!-- Bootstrap CSS -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    crossorigin="anonymous"
+    />
+    
+    <!-- FontAwesome -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    />
+    <link rel="icon" href="img/favicon_io/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --primary-green: #28a745;
+            --hover-green: #218838;
+            --text-dark: #333;
+            --light-bg: #f0fdfa;
+            --banner-bg: #aaf0f0;
+            --gradient-start: #28a745;
+            --gradient-end: #00e6ac;
+            --text-light-grey: #6b7280;
+            --border-light-grey: #e0e0e0;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            padding-top: 70px;
+            margin: 0;
+            background: #fff;
+            scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        a { text-decoration: none; }
+        
+        /* Navbar */
+        .navbar {
+            background: var(--primary-green);
+            transition: padding 0.3s;
+            padding: 1rem;
+        }
+        .navbar.navbar-shrink { padding: .25rem 1rem; }
+        .nav-link {
+            color: #fff!important;
+            position: relative;
+            transition: color .2s;
+            font-weight: 500;
+        }
+        .nav-link::after {
+            content: "";
+            position: absolute; bottom:0; left:50%;
+            width:0; height:2px;
+            background:#fff;
+            transform:translateX(-50%);
+            transition: width .3s;
+        }
+        .nav-link:hover::after { width:100%; }
+        .nav-link:hover { color: #e0e0e0!important; }
+        .nav-link.active { font-weight: 600; color: aqua !important; /* Highlight active link */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Subtle glow effect */ }
+        
+        /* Hero Carousel */
+        #heroCarousel {
+            position: relative; /* Needed for absolute positioning of overlay */
+            /* Removed max-width and margin-auto here to let .container handle it */
+        }
+        .carousel-item img {
+            width:100%; height:450px; /* Increased height for hero section */
+            object-fit:cover;
+            border-radius:1rem;
+        }
+
+        /* Hero Content Overlay (Removed as per user request) */
+        
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity:0;
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .animate-on-scroll.from-left { transform: translateX(-50px); }
+        .animate-on-scroll.from-right { transform: translateX(50px); }
+        .animate-on-scroll.from-top { transform: translateY(-50px); }
+        .animate-on-scroll.in-view {
+            opacity:1;
+            transform: translate(0,0);
+        }
+
+        /* Why Choose ETCP Section */
+        #whyChooseETCP {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        .value-prop-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%; /* Ensure cards in a row have equal height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .value-prop-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .value-prop-card i {
+            font-size: 3.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .value-prop-card:hover i {
+            transform: scale(1.1);
+        }
+        .value-prop-card h4 {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+        .value-prop-card p {
+            color: var(--text-light-grey);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Trending Destinations grid */
+        .dest-grid {
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr 1fr; /* now 4 columns */
+            grid-template-rows: 180px 180px;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        #dest-kandy     { grid-column: 1; grid-row: 1; }
+        #dest-sigiriya  { grid-column: 2; grid-row: 1; }
+        #dest-colombo   { grid-column: 3; grid-row: 1; }
+        #dest-explore   { grid-column: 4; grid-row: 1; }
+        #dest-galle     { grid-column: 1; grid-row: 2; }
+        #dest-jaffna    { grid-column: 2; grid-row: 2; }
+        #dest-nuwara    { grid-column: 3/5; grid-row: 2; }
+        
+        .dest-card {
+            position: relative;
+            overflow: hidden;
+            border-radius:1rem;
+            transition: transform .3s;
+            cursor: pointer;
+        }
+        .dest-card img {
+            width:100%; height:100%; object-fit:cover;
+        }
+        .dest-card h5 {
+            position:absolute; bottom:10px; left:10px;
+            color:#fff; text-shadow:1px 1px 3px rgba(0,0,0,.6);
+            margin: 0;
+        }
+        .dest-card:hover { transform: scale(1.06); }
+        
+        /* Explore More (reverted to original styling) */
+        #dest-explore {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            /* Reverted to using image and overlay text */
+            display: block; /* Ensure it behaves like other cards */
+            background: none; /* Remove gradient background */
+        }
+        #dest-explore img {
+            display: block; /* Show image again */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);  /* darken image slightly so white text pops */
+        }
+        #dest-explore h5 {
+            position: absolute; /* Revert to absolute positioning */
+            top: 60%; /* Revert to original position */
+            left: 50%;
+            transform: translate(-50%, -50%); /* Revert to original transform */
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+            margin: 0;
+            font-size: 1.25rem;
+            transition: transform .3s, color .3s;
+            white-space: nowrap;
+            z-index: 1;
+        }
+        
+        #dest-explore:hover h5 {
+            transform: translate(-50%, -50%) scale(1.1); /* Revert hover transform */
+            color: white; /* Keep text white on hover */
+        }
+
+        /* Featured Experiences Section */
+        #featuredExperiences {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        .featured-exp-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            height: 100%; /* Ensure cards in a row have equal height */
+            display: flex;
+            flex-direction: column;
+        }
+        .featured-exp-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .featured-exp-card img {
+            width: 100%;
+            height: 200px; /* Fixed height for images */
+            object-fit: cover;
+        }
+        .featured-exp-card-body {
+            padding: 1.25rem;
+            flex-grow: 1; /* Allow content to fill space */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .featured-exp-card-body h5 {
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+        .featured-exp-card-body p {
+            font-size: 0.9rem;
+            color: var(--text-light-grey);
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Allow description to take space */
+        }
+        .featured-exp-card-body .btn {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+            color: white;
+            border-radius: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            align-self: flex-start; /* Align button to start */
+        }
+        .featured-exp-card-body .btn:hover {
+            background-color: var(--hover-green);
+            border-color: var(--hover-green);
+            transform: scale(1.03);
+        }
+
+        /* Register Banner */
+        .register-banner {
+            margin:2rem 0;
+            padding:1.5rem 2rem;
+            border-radius:2rem;
+            background: linear-gradient(
+            90deg,
+            var(--banner-bg) 0%,
+            #c0faf0 50%,
+            var(--banner-bg) 100%
+            );
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer;
+            font-size:2.5rem;
+        }
+        .register-banner span {
+            margin:0 .75rem;
+            font-weight:600;
+        }
+        .blink-1 { animation: blink1 3s steps(1) infinite; }
+        .blink-2 { animation: blink2 3s steps(1) infinite; }
+        @keyframes blink1 {
+            0%,50%   { color: white; }
+            51%,100%{ color: var(--primary-green); }
+        }
+        @keyframes blink2 {
+            0%,50%   { color: var(--primary-green); }
+            51%,100%{ color: white; }
+        }
+        .arrows i {
+            font-size:2.5rem;
+            margin:0 .4rem;
+            color:rgba(0,100,0,.3);
+            animation: chase 2s infinite;
+        }
+        .arrows i:nth-child(odd)  { animation-delay:.2s; }
+        .arrows i:nth-child(even) { animation-delay:.4s; }
+        @keyframes chase {
+            0%,100% { color:rgba(0,100,0,.3); }
+            50%     { color: var(--primary-green); }
+        }
+        
+        /* Travel more heading green */
+        .container > h4.mt-4 { color: var(--primary-green) !important; }
+        
+        /* Rewards box */
+        .rewards {
+            border:1px solid var(--primary-green);
+            border-radius:1rem;
+            padding:1rem;
+            margin-bottom:2rem;
+            background:#fff;
+            display:flex; align-items:center; justify-content:space-between;
+        }
+        .rewards h5 { margin:0; font-weight:600; }
+        .rewards p { margin:0; }
+        .rewards .btn {
+            min-width:100px;
+            margin-left:.5rem;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .rewards .btn:hover {
+            transform: scale(1.1);
+            box-shadow:0 4px 8px rgba(0,0,0,.2);
+        }
+        .rewards img {
+            width:80px; height:60px;
+            margin-left:1rem; margin-bottom: 0.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            padding: 40px 0;
+        }
+        .footer-links a { display:block; color:var(--text-dark); margin:.25rem 0; transition:color .2s; }
+        .footer-links a:hover { color: var(--hover-green); }
+        .social-icons a {
+            color:var(--text-dark); margin-right:.75rem;
+            transition: box-shadow .2s, color .2s;
+        }
+        .social-icons a:hover {
+            color:var(--hover-green);
+            box-shadow:0 0 6px rgba(0,0,0,.2);
+        }
+        .footer-bottom { text-align:center; margin-top:1rem; font-size:.85rem; }
+
+        /* Responsive adjustments */
+        @media (max-width: 991.98px) {
+            .hero-content-overlay h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content-overlay .btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 1rem;
+            }
+            /* Mini Search Bar is removed */
+
+            .dest-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+                grid-template-rows: auto;
+            }
+            .dest-grid > div {
+                grid-column: auto !important;
+                grid-row: auto !important;
+                height: 200px; /* Consistent height for mobile cards */
+            }
+            .register-banner {
+                flex-direction: column;
+                font-size: 1.8rem;
+                padding: 1rem;
+            }
+            .register-banner span {
+                margin-bottom: 0.5rem;
+            }
+            .arrows {
+                margin-top: 1rem;
+            }
+            .rewards {
+                flex-direction: column;
+                text-align: center;
+            }
+            .rewards > div {
+                margin-bottom: 1rem;
+            }
+            .rewards img {
+                margin: 1rem auto;
+            }
+            .rewards .d-flex {
+                flex-direction: column;
+                width: 100%;
+            }
+            .rewards .btn {
+                width: 100%;
+                margin-left: 0 !important;
+                margin-bottom: 0.5rem;
+            }
+
+            /* New sections responsiveness */
+            .value-prop-card, .featured-exp-card {
+                margin-bottom: 1.5rem; /* Add space between stacked cards */
+            }
+        }
+        @media (max-width: 767.98px) {
+            body {
+                padding-top: 56px;
+            }
+            .hero-content-overlay h1 {
+                font-size: 2rem;
+            }
+            .carousel-item img {
+                height: 350px;
+            }
+            .value-prop-card {
+                padding: 1.5rem;
+            }
+            .value-prop-card i {
+                font-size: 2.8rem;
+                margin-bottom: 1rem;
+            }
+            .value-prop-card h4 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Keyframe for fadeInScale (reused for guest popover) */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        /* Keyframe for fadeInUp (reused for hero content) */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="ETCP" height="40"></a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html">Register your property</a></li>
+                    <li class="nav-item"><a class="nav-link" href="plan.html">Plan your trip</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><img src="img/flag.png" height="24"></a></li>
+                    <li class="nav-item"><a class="nav-link" href="signin.html">Sign in</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Carousel -->
+    <div id="heroCarousel" class="carousel slide container mt-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active"><img src="img/slide1.jpg" class="d-block w-100" alt="Scenic view 1"></div>
+            <div class="carousel-item"><img src="img/slide2.jpg" class="d-block w-100" alt="Scenic view 2"></div>
+            <div class="carousel-item"><img src="img/slide3.jpg" class="d-block w-100" alt="Scenic view 3"></div>
+            <div class="carousel-item"><img src="img/slide4.jpg" class="d-block w-100" alt="Scenic view 4"></div>
+            <div class="carousel-item"><img src="img/slide5.jpg" class="d-block w-100" alt="Scenic view 5"></div>
+            <div class="carousel-item"><img src="img/slide6.jpg" class="d-block w-100" alt="Scenic view 6"></div>
+            <div class="carousel-item"><img src="img/slide7.jpg" class="d-block w-100" alt="Scenic view 7"></div>
+            <div class="carousel-item"><img src="img/slide8.jpg" class="d-block w-100" alt="Scenic view 8"></div>
+        </div>
+        <!-- Hero Content Overlay (Removed as per user request) -->
+        <button class="carousel-control-prev" data-bs-target="#heroCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+        <button class="carousel-control-next" data-bs-target="#heroCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+    </div>
+    
+    <!-- Welcome -->
+    <div class="container mt-5 animate-on-scroll from-top" data-anim="down">
+        <h2>Welcome to ETCP – Your Gateway to Eco-Conscious Travel!</h2>
+        <p>
+            Discover a world of sustainable adventures with ETCP, a cloud-based platform crafted by a visionary Sri Lankan start-up dedicated to eco-tourism. Seamlessly plan and engage with eco-friendly experiences that connect you to nature while supporting local communities. Join us in revolutionizing travel with purpose!
+        </p>
+    </div>
+
+    <!-- Trending Destinations -->
+    <div class="container mt-4">
+        <h3 class="text-success animate-on-scroll from-left" data-anim="left">Trending Destinations</h3>
+        <p class="text-muted animate-on-scroll from-left" data-anim="left">Most popular choices for travellers from Sri Lanka</p>
+        <div class="dest-grid animate-on-scroll" data-anim="left">
+            <div id="dest-kandy"    class="dest-card"><img src="img/kandy.jpg" alt="Kandy"><h5>Kandy</h5></div>
+            <div id="dest-sigiriya" class="dest-card"><img src="img/sigiria.jpg" alt="Sigiriya"><h5>Sigiriya</h5></div>
+            <div id="dest-colombo" class="dest-card"><img src="img/colombo.jpg" alt="Colombo"><h5>Colombo</h5></div>
+            <div id="dest-explore" class="dest-card" onclick="location.href='plan.html'">
+                <img src="img/beach.jpg" alt="Explore More">
+                <h5>Explore More…</h5>
+            </div>
+            <div id="dest-galle"    class="dest-card"><img src="img/galle.jpeg" alt="Galle"><h5>Galle</h5></div>
+            <div id="dest-jaffna"   class="dest-card"><img src="img/jaffna.jpg" alt="Jaffna"><h5>Jaffna</h5></div>
+            <div id="dest-nuwara"   class="dest-card"><img src="img/nuwara.jpg" alt="Nuwara Eliya"><h5>Nuwara Eliya</h5></div>
+        </div>
+    </div>
+
+    <!-- Why Choose ETCP? Section -->
+    <section id="whyChooseETCP" class="container">
+        <h3 class="text-center text-success mb-4 animate-on-scroll from-top">Why Choose ETCP?</h3>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="value-prop-card animate-on-scroll from-left">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Sustainable Journeys</h4>
+                    <p>Book trips that minimize environmental impact and promote responsible tourism practices.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-prop-card animate-on-scroll from-top">
+                    <i class="fas fa-hands-helping"></i>
+                    <h4>Support Local Communities</h4>
+                    <p>Your travel directly contributes to the well-being and economic growth of local populations.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-prop-card animate-on-scroll from-right">
+                    <i class="fas fa-mountain"></i>
+                    <h4>Unforgettable Adventures</h4>
+                    <p>Explore unique, authentic experiences curated for eco-conscious travelers like you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Eco-Experiences Section -->
+    <section id="featuredExperiences" class="container">
+        <h3 class="text-success mb-4 animate-on-scroll from-left">Featured Eco-Experiences</h3>
+        <p class="text-muted mb-4 animate-on-scroll from-left">Unique and impactful adventures hand-picked for you.</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="featured-exp-card animate-on-scroll from-left">
+                    <img src="img/canopy.jpg" alt="Rainforest Canopy Walk">
+                    <div class="featured-exp-card-body">
+                        <h5>Rainforest Canopy Walk</h5>
+                        <p>Experience the vibrant biodiversity of the Amazon from breathtaking suspended bridges.</p>
+                        <button class="btn" data-bs-toggle="modal" data-bs-target="#experienceModal" data-experience-id="rainforest">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="featured-exp-card animate-on-scroll from-top">
+                    <img src="img/coral.webp" alt="Coral Conservation Dive">
+                    <div class="featured-exp-card-body">
+                        <h5>Coral Conservation Dive</h5>
+                        <p>Join marine biologists in restoring coral reefs in the pristine waters of the Maldives.</p>
+                        <button class="btn" data-bs-toggle="modal" data-bs-target="#experienceModal" data-experience-id="coral">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="featured-exp-card animate-on-scroll from-right">
+                    <img src="img/safari.png" alt="Wildlife Safari Lodge">
+                    <div class="featured-exp-card-body">
+                        <h5>Ethical Wildlife Safari</h5>
+                        <p>Stay at an eco-lodge and witness incredible wildlife in their natural habitat in Kenya.</p>
+                        <button class="btn" data-bs-toggle="modal" data-bs-target="#experienceModal" data-experience-id="safari">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Register Banner -->
+    <div class="container">
+        <div class="register-banner" onclick="location.href='register.html'">
+            <span class="blink-1">0% Cost!</span>
+            <span class="blink-2">100% Free!</span>
+            <span class="blink-1">Register Now!</span>
+            <div class="arrows">
+                <i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i>
+                <i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rewards Box -->
+    <div class="container">
+        <h4 class="mt-4">Travel more, spend less</h4>
+        <div class="rewards">
+            <div>
+                <h5>Sign in, save money</h5>
+                <p>Save 10% or more at participating properties – just look for the green Eco Rewards!</p>
+            </div>
+            <img src="img/green - cup.png" alt="Eco Rewards Cup">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-success" onclick="location.href='signin.html'">Sign in</button>
+                <button class="btn btn-outline-success ms-2" onclick="location.href='register.html'">Register</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <img src="img/logo.png" alt="ETCP logo" style="width:120px; height:auto;">
+                    <p>The ETCP is an innovative cloud-based platform designed to revolutionize the way eco-conscious travellers discover, plan, and engage with eco-tourism experiences worldwide.</p>
+                </div>
+                <div class="col-md-2 footer-links"><h6>Discover</h6><a href="#">Home</a><a href="#">Features</a></div>
+                <div class="col-md-2 footer-links"><h6>Support</h6><a href="#">Help Center</a><a href="#">FAQs</a><a href="#">Contact Support</a></div>
+                <div class="col-md-2 footer-links"><h6>Partners</h6><a href="#">Become a Provider</a><a href="#">Affiliates</a></div>
+                <div class="col-md-2 footer-links"><h6>Legal</h6><a href="#">Terms & Settings</a><a href="#">Privacy Policy</a><a href="#">Contact Us</a></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col text-center social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom text-center mt-2">
+                <p>Copyright © 2025 ETCP.com™. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Experience Details Modal -->
+    <div class="modal fade" id="experienceModal" tabindex="-1" aria-labelledby="experienceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="experienceModalLabel">Experience Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalExperienceImage" src="" alt="Experience Image" class="img-fluid rounded mb-3">
+                    <h4 id="modalExperienceTitle" class="text-success mb-2"></h4>
+                    <p id="modalExperienceDescription"></p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fas fa-map-marker-alt me-2 text-primary-green"></i> <span id="modalExperienceLocation"></span></li>
+                        <li class="list-group-item"><i class="fas fa-clock me-2 text-primary-green"></i> <span id="modalExperienceDuration"></span></li>
+                        <li class="list-group-item"><i class="fas fa-info-circle me-2 text-primary-green"></i> <span id="modalExperienceIncludes"></span></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"
+    ></script>
+    <script>
+        // Data for featured experiences (for modals)
+        const featuredExperiencesData = {
+            rainforest: {
+                title: "Rainforest Canopy Walk",
+                image: "img/canopy.jpg",
+                description: "Immerse yourself in the lush Amazon rainforest with an exhilarating canopy walk. Discover unique flora and fauna from a bird's-eye view, guided by expert naturalists who will share insights into the delicate ecosystem. This experience emphasizes minimal impact and supports local conservation efforts.",
+                location: "Amazon Rainforest, Brazil",
+                duration: "Full-day tour (approx. 8 hours)",
+                includes: "Guided tour, safety equipment, light refreshments, transport from local eco-lodge."
+            },
+            coral: {
+                title: "Coral Conservation Dive",
+                image: "img/coral.webp",
+                description: "Participate in a vital coral reef restoration project in the crystal-clear waters of the Maldives. Work alongside marine biologists, learn about coral propagation, and contribute directly to the health of our oceans. Suitable for certified divers; non-divers can participate in related activities.",
+                location: "Baa Atoll, Maldives",
+                duration: "Half-day activity (approx. 4 hours)",
+                includes: "Dive equipment, expert guidance, conservation briefing, contribution to reef project."
+            },
+            safari: {
+                title: "Ethical Wildlife Safari",
+                image: "img/safari.png",
+                description: "Embark on an unforgettable ethical safari adventure in Kenya, staying at a community-owned eco-lodge. Witness the majestic 'Big Five' in their natural habitat while ensuring your visit directly benefits local conservation and anti-poaching initiatives. Guided by experienced local rangers.",
+                location: "Maasai Mara, Kenya",
+                duration: "3-day / 2-night package",
+                includes: "Game drives, eco-lodge accommodation, all meals, local guide, park fees."
+            }
+        };
+
+
+        // Navbar shrink
+        const nav = document.getElementById('mainNavbar');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('navbar-shrink', window.scrollY > 50);
+        });
+        
+        // Scroll animations (existing logic)
+        document.addEventListener('DOMContentLoaded', () => {
+            const els = document.querySelectorAll('.animate-on-scroll');
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    e.isIntersecting ? e.target.classList.add('in-view') : e.target.classList.remove('in-view');
+                });
+            }, { threshold: 0.2 });
+            els.forEach(el => obs.observe(el));
+
+            // --- Experience Modal Logic ---
+            const experienceModal = document.getElementById('experienceModal');
+            experienceModal.addEventListener('show.bs.modal', function (event) {
+                // Button that triggered the modal
+                const button = event.relatedTarget;
+                // Extract info from data-bs-whatever attributes
+                const experienceId = button.getAttribute('data-experience-id');
+                const experience = featuredExperiencesData[experienceId];
+
+                // Update the modal's content.
+                const modalTitle = experienceModal.querySelector('#modalExperienceTitle');
+                const modalImage = experienceModal.querySelector('#modalExperienceImage');
+                const modalDescription = experienceModal.querySelector('#modalExperienceDescription');
+                const modalLocation = experienceModal.querySelector('#modalExperienceLocation');
+                const modalDuration = experienceModal.querySelector('#modalExperienceDuration');
+                const modalIncludes = experienceModal.querySelector('#modalExperienceIncludes');
+
+                if (experience) {
+                    modalTitle.textContent = experience.title;
+                    modalImage.src = experience.image;
+                    modalImage.alt = experience.title;
+                    modalDescription.textContent = experience.description;
+                    modalLocation.textContent = experience.location;
+                    modalDuration.textContent = experience.duration;
+                    modalIncludes.textContent = experience.includes;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
