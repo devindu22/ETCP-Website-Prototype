@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details (Dummy) | ETCP</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon_io/favicon.ico" type="image/x-icon">
+    
+    <style>
+        :root {
+            --primary-green: rgb(6, 145, 98);
+            --hover-green: #218838;
+            --gradient-start: #28a745;
+            --gradient-end: #00e6ac;
+            --text-dark: #333;
+            --text-medium-grey: #4b5563;
+            --text-light-grey: #6b7280;
+            --light-bg: #f0fdfa;
+            --card-border-radius: 1rem;
+            --section-bg: #fff;
+            --border-color: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            padding-top: 70px; /* For fixed navbar */
+            background-color: var(--light-bg);
+            margin: 0;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-green);
+            transition: padding 0.3s ease;
+            padding: 1rem 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .navbar.navbar-shrink {
+            padding: 0.25rem 1rem;
+        }
+        .navbar .navbar-brand img {
+            height: 40px;
+        }
+        .nav-link {
+            color: white !important;
+            position: relative;
+            padding: 0.5rem 0.75rem;
+            transition: color 0.2s ease;
+            font-weight: 500;
+        }
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link:hover {
+            color: #e0e0e0 !important;
+        }
+        .nav-link.active {
+            font-weight: 600;
+            color: aqua !important;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+        
+        /* Language Dropdown Specific Styling */
+        .navbar-nav .dropdown-toggle {
+            padding-right: 0.75rem !important; /* Adjust padding for dropdown toggle */
+            padding-left: 0.75rem !important;
+        }
+        .navbar-nav .dropdown-toggle img {
+            margin-right: 0.25rem; /* Space between flag and caret */
+        }
+        .dropdown-menu {
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: 0.5rem;
+            background-color: #fff; /* Ensure white background for dropdown */
+        }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            color: var(--text-dark);
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .dropdown-item:hover {
+            background-color: var(--light-bg); /* Using light-bg from property.html variables */
+            color: var(--primary-green);
+        }
+        .dropdown-item img {
+            height: 20px; /* Smaller flags in dropdown */
+            width: 20px;
+            border-radius: 50%;
+            margin-right: 0.75rem;
+            object-fit: cover;
+        }
+        
+        /* Remove underline from language dropdown toggle */
+        .nav-item.dropdown .nav-link::after {
+            width: 0 !important;
+            background: transparent !important;
+        }
+        
+        /* Remove dropdown caret (arrow) */
+        .nav-item.dropdown .dropdown-toggle::after {
+            display: none !important;
+        }
+        
+        /* Hero Section */
+        #propertyHero {
+            background-color: var(--section-bg);
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        #propertyHero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+        #propertyHero .location-info {
+            font-size: 1.1rem;
+            color: var(--text-medium-grey);
+            margin-bottom: 1rem;
+        }
+        #propertyHero .rating-info {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        #propertyHero .rating-info .stars {
+            color: #f5c518;
+            margin-right: 0.5rem;
+        }
+        #propertyHero .rating-info .badge {
+            background-color: var(--primary-green);
+            font-weight: 600;
+            padding: 0.4em 0.7em;
+            border-radius: 0.5rem;
+            margin-left: 0.5rem;
+        }
+        #propertyHero .contact-info {
+            font-size: 0.95rem;
+            color: var(--text-light-grey);
+        }
+        #propertyHero .contact-info i {
+            color: var(--primary-green);
+            margin-right: 0.5rem;
+        }
+        
+        /* Main Content Layout */
+        .property-content-wrapper {
+            padding: 2rem 0;
+        }
+        .property-main-column {
+            background-color: var(--section-bg);
+            border-radius: var(--card-border-radius);
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .property-sidebar-column {
+            padding-left: 1.5rem; /* Space for sticky sidebar */
+        }
+        
+        /* Sticky Booking Widget */
+        .booking-widget {
+            background-color: var(--section-bg);
+            border-radius: var(--card-border-radius);
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 90px; /* Adjust based on navbar height */
+            z-index: 10;
+        }
+        .booking-widget h4 {
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+        .booking-widget .price-display {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        .booking-widget .price-display small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-light-grey);
+        }
+        .booking-widget .form-control {
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+        }
+        .booking-widget .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+        }
+        .booking-widget .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        .booking-widget .quantity-selector button {
+            background-color: #f3f4f6;
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .booking-widget .quantity-selector button:hover {
+            background-color: #e5e7eb;
+        }
+        .booking-widget .quantity-selector .quantity-display {
+            padding: 0.5rem 1rem;
+            min-width: 3rem;
+            text-align: center;
+            font-weight: 500;
+            color: #1f2937;
+        }
+        .booking-widget .btn-book {
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .booking-widget .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Sections within Main Column */
+        .property-section h4 {
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            padding-top: 1rem; /* Space from previous section */
+            border-top: 1px solid var(--border-color);
+            margin-top: 1.5rem;
+        }
+        .property-section:first-child h4 {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+        .property-section p {
+            line-height: 1.6;
+            color: var(--text-medium-grey);
+        }
+        
+        /* Amenities Grid */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        .amenity-item i {
+            color: var(--primary-green);
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Reviews Section */
+        .review-card {
+            background-color: #f8f9fa;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .review-card .reviewer-name {
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 0.25rem;
+        }
+        .review-card .review-date {
+            font-size: 0.85rem;
+            color: var(--text-light-grey);
+            margin-bottom: 0.5rem;
+        }
+        .review-card .review-stars {
+            color: #f5c518;
+            margin-bottom: 0.75rem;
+        }
+        .review-card .review-text {
+            font-size: 0.95rem;
+            color: var(--text-medium-grey);
+            line-height: 1.5;
+        }
+        
+        /* Sort by dropdown for reviews */
+        .sort-dropdown .dropdown-toggle {
+            background-color: #fff;
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        .sort-dropdown .dropdown-toggle:hover {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        .sort-dropdown .dropdown-toggle::after {
+            margin-left: .5rem;
+        }
+        .sort-dropdown .dropdown-menu {
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,.1);
+        }
+        .sort-dropdown .dropdown-item {
+            color: #333;
+            font-size: 0.95rem;
+        }
+        .sort-dropdown .dropdown-item:hover {
+            background-color: var(--light-bg); /* Using light-bg from property.html variables */
+            color: var(--primary-green);
+        }
+        
+        /* Map Section */
+        .map-container {
+            border-radius: var(--card-border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 1.5rem;
+        }
+        .map-container img {
+            width: 100%;
+            height: 300px; /* Fixed height for map image */
+            object-fit: cover;
+            display: block;
+        }
+        .map-container .map-address {
+            padding: 1rem;
+            background-color: var(--section-bg);
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .map-container .map-address i {
+            color: var(--primary-green);
+            margin-right: 0.5rem;
+        }
+        .map-container .btn-directions {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        .map-container .btn-directions:hover {
+            background-color: var(--hover-green);
+        }
+        
+        /* Contact Section */
+        .contact-details-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .contact-details-list li {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        .contact-details-list li i {
+            color: var(--primary-green);
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== Footer ===== */
+        footer {
+            background-color: rgb(6, 145, 98); 
+            color: #ecf0f1; 
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+        .footer-links a { display:block; color:#ecf0f1; margin:.25rem 0; transition:color .2s; }
+        .footer-links a:hover { color: var(--primary-green); }
+        .social-icons a {
+            color:#ecf0f1; margin-right:.75rem;
+            transition: transform .2s, color .2s;
+        }
+        .social-icons a:hover {
+            color: var(--primary-green);
+            transform: scale(1.1);
+        }
+        .footer-bottom { text-align:center; margin-top:1.5rem; font-size:.8rem; color: rgba(255,255,255,.7); }
+        footer img { filter: brightness(0) invert(1); }
+        
+        
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .property-sidebar-column {
+                padding-left: 0; /* Remove padding on small screens */
+                margin-top: 2rem; /* Add space between main content and sidebar */
+            }
+            .booking-widget {
+                position: static; /* Remove sticky behavior on small screens */
+                top: auto;
+            }
+            #propertyHero h1 {
+                font-size: 2rem;
+            }
+            #propertyHero .location-info {
+                font-size: 1rem;
+            }
+            .amenities-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            body {
+                padding-top: 56px; /* Adjust for smaller collapsed navbar height on mobile */
+            }
+            #propertyHero {
+                padding: 1.5rem 0;
+            }
+            #propertyHero h1 {
+                font-size: 1.8rem;
+            }
+            .property-main-column {
+                padding: 1.5rem;
+                border-radius: 0; /* Remove radius on very small screens */
+            }
+            .property-section h4 {
+                font-size: 1.3rem;
+            }
+            .map-container img {
+                height: 200px; /* Smaller map height on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== Navbar ===== -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="ETCP Logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html">Register your property</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="plan.html">Plan your trip</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+                <!-- Language Dropdown - Added to property.html -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguage" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="img/flag.png" alt="Sri Lankan Flag" style="height:24px; border-radius:50%;" />
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownLanguage">
+                        <li><a class="dropdown-item" href="#"><img src="img/flag.png" alt="English Flag" /> English</a></li>
+                        <li><a class="dropdown-item" href="#"><img src="img/srilanka.png" alt="Sri Lankan Flag" /> Sinhala</a></li>
+                        <li><a class="dropdown-item" href="#"><img src="img/russia.webp" alt="Russian Flag" /> Russian</a></li>
+                        <li><a class="dropdown-item" href="#"><img src="img/spain.png" alt="Spanish Flag" /> Spanish</a></li>
+                        <li><a class="dropdown-item" href="#"><img src="img/uae.png" alt="Arabic Flag" /> Arabic</a></li>
+                        <li><a class="dropdown-item" href="#"><img src="img/china.png" alt="Chinese Flag" /> Chinese</a></li>
+                        <li><a class="dropdown-item" href="#"><img src="img/japan.png" alt="Japanese Flag" /> Japanese</a></li>
+                        <li><a class="dropdown-item" href="#"><img src="img/france.png" alt="French Flag" /> French</a></li>
+                        <li><a class="dropdown-item" href="#"><img src="img/Italy.webp" alt="Italian Flag" /> Italian</a></li>
+                        <li><a class="dropdown-item" href="#"><img src="img/indian.png" alt="Hindi Flag" /> Hindi</a></li>
+                        <li><a class="dropdown-item" href="#"><img src="img/Germany.webp" alt="German Flag" /> German</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="signin.html">Sign in</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Property Hero Section -->
+<section id="propertyHero" class="container-fluid">
+    <div class="container">
+        <h1 id="propertyName">Anderson Tropicz</h1>
+        <p class="location-info">
+            <i class="fas fa-map-marker-alt"></i> Yala, Sri Lanka
+        </p>
+        <div class="rating-info">
+            <span id="propertyStars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </span>
+            <span class="fw-bold" id="propertyRating">8.9</span>
+            <span class="text-muted" id="propertyReviews">(108 reviews)</span>
+            <span class="badge text-bg-success" id="propertyReviewText">Superb</span>
+        </div>
+        <div class="contact-info">
+            <p class="mb-0"><i class="fas fa-phone"></i> +94 77 123 4567</p>
+            <p class="mb-0"><i class="fas fa-envelope"></i> info@andersontropicz.com</p>
+        </div>
+    </div>
+</section>
+
+<!-- Property Content Wrapper -->
+<div class="container property-content-wrapper">
+    <div class="row">
+        <!-- Left Column: Main Property Details -->
+        <div class="col-lg-8 property-main-column">
+            <!-- Image Gallery Carousel -->
+            <div id="propertyGallery" class="carousel slide mb-4" data-bs-ride="carousel">
+                <div class="carousel-inner" id="galleryCarouselInner">
+                    <div class="carousel-item active">
+                        <img src="img/Anderson Tropicz1.jpg" class="d-block w-100 rounded" alt="Anderson Tropicz Image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/Anderson Tropicz2.jpg" class="d-block w-100 rounded" alt="Anderson Tropicz Image 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/Anderson Tropicz3.jpg" class="d-block w-100 rounded" alt="Anderson Tropicz Image 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/Anderson Tropicz4.jpg" class="d-block w-100 rounded" alt="Anderson Tropicz Image 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/Anderson Tropicz5.jpg" class="d-block w-100 rounded" alt="Anderson Tropicz Image 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/Anderson Tropicz6.jpg" class="d-block w-100 rounded" alt="Anderson Tropicz Image 6">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/Anderson Tropicz7.jpg" class="d-block w-100 rounded" alt="Anderson Tropicz Image 7">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/Anderson Tropicz8.jpg" class="d-block w-100 rounded" alt="Anderson Tropicz Image 8">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#propertyGallery" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#propertyGallery" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            
+            <!-- About Property -->
+            <div class="property-section">
+                <h4>About <span id="aboutPropertyName">Anderson Tropicz</span></h4>
+                <p id="propertyDescription">Anderson Tropicz offers a serene escape amidst the lush landscapes of Yala. This eco-lodge blends modern comforts with sustainable practices, providing guests with an immersive experience in nature. Enjoy stunning views, fresh local cuisine, and a tranquil atmosphere perfect for relaxation and exploration. We are committed to minimizing our environmental footprint through renewable energy and waste reduction.</p>
+            </div>
+            
+            <!-- Amenities -->
+            <div class="property-section">
+                <h4>Amenities & Facilities</h4>
+                <div class="amenities-grid" id="propertyAmenities">
+                    <div class="amenity-item"><i class="fas fa-wifi"></i> <span>Free Wi-Fi</span></div>
+                    <div class="amenity-item"><i class="fas fa-swimming-pool"></i> <span>Swimming Pool</span></div>
+                    <div class="amenity-item"><i class="fas fa-parking"></i> <span>Free Parking</span></div>
+                    <div class="amenity-item"><i class="fas fa-utensils"></i> <span>Restaurant</span></div>
+                    <div class="amenity-item"><i class="fas fa-concierge-bell"></i> <span>24-hour Front Desk</span></div>
+                    <div class="amenity-item"><i class="fas fa-snowflake"></i> <span>Air Conditioning</span></div>
+                </div>
+            </div>
+            
+            <!-- Sustainability Features -->
+            <div class="property-section">
+                <h4>Our Commitment to Sustainability</h4>
+                <ul class="list-group list-group-flush" id="sustainabilityFeatures">
+                    <li class="list-group-item"><i class="fas fa-check-circle me-2 text-primary-green"></i> Solar-powered electricity</li>
+                    <li class="list-group-item"><i class="fas fa-check-circle me-2 text-primary-green"></i> Electric-vehicle charging station</li>
+                    <li class="list-group-item"><i class="fas fa-check-circle me-2 text-primary-green"></i> Rainwater harvesting system</li>
+                    <li class="list-group-item"><i class="fas fa-check-circle me-2 text-primary-green"></i> Organic waste composting</li>
+                    <li class="list-group-item"><i class="fas fa-check-circle me-2 text-primary-green"></i> Support for local community projects</li>
+                    <li class="list-group-item"><i class="fas fa-check-circle me-2 text-primary-green"></i> Use of locally sourced materials and produce</li>
+                    <li class="list-group-item"><i class="fas fa-check-circle me-2 text-primary-green"></i> Water-saving fixtures throughout the property</li>
+                </ul>
+            </div>
+            
+            <!-- Customer Reviews -->
+            <div class="property-section">
+                <div class="d-flex justify-content-between align-items-center mb-3"> <!-- New wrapper for alignment -->
+                    <h4>Customer Reviews (<span id="totalReviews">5</span>)</h4>
+                    <div class="sort-dropdown dropdown">
+                        <button id="reviewSortBtn" class="btn btn-light dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-sort me-2"></i>
+                        Sort by: <strong id="reviewSortLabel">Newest first</strong>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" data-value="Newest first" href="#">Newest first</a></li>
+                        <li><a class="dropdown-item" data-value="Oldest first" href="#">Oldest first</a></li>
+                        <li><a class="dropdown-item" data-value="Highest rating" href="#">Highest rating</a></li>
+                        <li><a class="dropdown-item" data-value="Lowest rating" href="#">Lowest rating</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="customerReviews">
+                <!-- Reviews will be dynamically inserted here -->
+            </div>
+        </div>
+        
+        <!-- Map Location -->
+        <div class="property-section">
+            <h4>Location on Map</h4>
+            <div class="map-container">
+                <img id="propertyMapImage" src="img/yala_location.png" alt="Property Location Map">
+                <div class="map-address">
+                    <div><i class="fas fa-map-marker-alt"></i> 123 Peacock Road, Yala</div>
+                    <button class="btn btn-directions"><i class="fas fa-directions me-2"></i>Get Directions</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Videos (Optional) -->
+        <div class="property-section" id="propertyVideosSection">
+            <h4>Videos</h4>
+            <div class="row g-3" id="propertyVideos">
+                <div class="col-md-12"> <!-- Use col-md-12 if you want this wrapper to control the width -->
+                    <div class="video-wrapper"> <!-- New wrapper div -->
+                        <div class="ratio ratio-16x9 rounded">
+                            <iframe 
+                            src="https://www.youtube.com/embed/3b44Euuoz9I" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- Right Column: Booking Widget -->
+<div class="col-lg-4 property-sidebar-column">
+    <div class="booking-widget">
+        <h4>Plan Your Stay</h4>
+        <div class="price-display">
+            LKR <span id="bookingPrice">10,800</span> <small>/ night</small>
+        </div>
+        <div class="mb-3">
+            <label for="checkInDate" class="form-label small text-muted">Check-in Date</label>
+            <input type="date" class="form-control" id="checkInDate">
+        </div>
+        <div class="mb-3">
+            <label for="checkOutDate" class="form-label small text-muted">Check-out Date</label>
+            <input type="date" class="form-control" id="checkOutDate">
+        </div>
+        <div class="mb-3">
+            <label class="form-label small text-muted">Guests</label>
+            <div class="d-flex align-items-center justify-content-between">
+                <span>Adults:</span>
+                <div class="quantity-selector">
+                    <button class="minus-btn" data-target="bookingAdults">-</button>
+                    <span class="quantity-display" id="bookingAdultsQuantity">2</span>
+                    <button class="plus-btn" data-target="bookingAdults">+</button>
+                </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between mt-2">
+                <span>Children:</span>
+                <div class="quantity-selector">
+                    <button class="minus-btn" data-target="bookingChildren">-</button>
+                    <span class="quantity-display" id="bookingChildrenQuantity">0</span>
+                    <button class="plus-btn" data-target="bookingChildren">+</button>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-book">Book Now</button>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer>
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-md-4 footer-logo">
+                <img src="img/logo.png" alt="ETCP logo" style="width: 120px; height: 75px;">
+                <p class="footer-desc">
+                    The ETCP is an innovative cloud-based platform designed to revolutionize the way eco-conscious travellers discover, plan, and engage with eco-tourism experiences worldwide.
+                </p>
+            </div>
+            <div class="col-md-2 footer-links">
+                <h6>Discover</h6>
+                <a href="#">Home</a>
+                <a href="#">Features</a>
+                <a href="#">Destinations</a>
+            </div>
+            <div class="col-md-2 footer-links">
+                <h6>Support</h6>
+                <a href="#">Help Center</a>
+                <a href="#">FAQs</a>
+                <a href="#">Contact Support</a>
+            </div>
+            <div class="col-md-2 footer-links">
+                <h6>Partners</h6>
+                <a href="#">Become a Provider</a>
+                <a href="#">Affiliates</a>
+            </div>
+            <div class="col-md-2 footer-links">
+                <h6>Legal</h6>
+                <a href="#">Terms & Settings</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col text-center social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 ETCP.com™. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS bundle (with Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Navbar shrink
+        const navbar = document.getElementById('mainNavbar');
+        function checkNavbarScroll() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-shrink');
+            } else {
+                navbar.classList.remove('navbar-shrink');
+            }
+        }
+        document.addEventListener('scroll', checkNavbarScroll);
+        checkNavbarScroll(); // Initial check on load
+        
+        // --- Booking Widget Logic ---
+        const bookingAdultsQuantitySpan = document.getElementById('bookingAdultsQuantity');
+        const bookingChildrenQuantitySpan = document.getElementById('bookingChildrenQuantity');
+        const bookingPriceDisplay = document.getElementById('bookingPrice');
+        const checkInDateInput = document.getElementById('checkInDate');
+        const checkOutDateInput = document.getElementById('checkOutDate');
+        const btnBook = document.querySelector('.btn-book');
+        
+        let bookingAdultsCount = parseInt(bookingAdultsQuantitySpan.textContent);
+        let bookingChildrenCount = parseInt(bookingChildrenQuantitySpan.textContent);
+        
+        // Set default dates for booking widget
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1);
+        checkInDateInput.value = today.toISOString().split('T')[0];
+        checkOutDateInput.value = tomorrow.toISOString().split('T')[0];
+        
+        // Quantity selectors for booking widget
+        document.querySelectorAll('.booking-widget .quantity-selector button').forEach(button => {
+            button.addEventListener('click', function() {
+                const target = this.dataset.target;
+                const displaySpan = document.getElementById(target + 'Quantity');
+                let currentValue = parseInt(displaySpan.textContent);
+                
+                if (this.classList.contains('plus-btn')) {
+                    currentValue++;
+                } else if (currentValue > 0) {
+                    currentValue--;
+                }
+                displaySpan.textContent = currentValue;
+                
+                if (target === 'bookingAdults') bookingAdultsCount = currentValue;
+                else if (target === 'bookingChildren') bookingChildrenCount = currentValue;
+                
+                // This dummy page doesn't calculate price dynamically, but a real one would
+            });
+        });
+        
+        btnBook.addEventListener('click', () => {
+            const bookingDetails = {
+                propertyId: 1, // Hardcoded for dummy
+                propertyName: "Anderson Tropicz", // Hardcoded for dummy
+                checkIn: checkInDateInput.value,
+                checkOut: checkOutDateInput.value,
+                adults: bookingAdultsCount,
+                children: bookingChildrenCount,
+                price: 10800 // Hardcoded for dummy
+            };
+            console.log("Booking initiated:", bookingDetails);
+            alert("Booking initiated! (This is a dummy alert for demonstration purposes.)"); // Using alert as per original code, but noted it should be replaced.
+        });
+        
+        // --- Customer Reviews Logic ---
+        const customerReviewsContainer = document.getElementById('customerReviews');
+        const totalReviewsSpan = document.getElementById('totalReviews');
+        const reviewSortLabel = document.getElementById('reviewSortLabel');
+        const reviewSortDropdownItems = document.querySelectorAll('.sort-dropdown .dropdown-item');
+        
+        const dummyReviews = [
+        {
+            id: 1,
+            reviewerName: "Amali S.",
+            date: "2025-06-15",
+            rating: 8.9,
+            text: "Absolutely loved my stay! The staff were incredibly friendly and the views were breathtaking. A true eco-paradise."
+        },
+        {
+            id: 2,
+            reviewerName: "John D.",
+            date: "2025-05-20",
+            rating: 8.0,
+            text: "Great location and very peaceful. The food was excellent and the commitment to sustainability is commendable."
+        },
+        {
+            id: 3,
+            reviewerName: "Priya R.",
+            date: "2025-04-10",
+            rating: 8.5,
+            text: "A wonderful experience! Clean rooms, beautiful surroundings, and a truly relaxing atmosphere. Highly recommend for nature lovers."
+        },
+        {
+            id: 4,
+            reviewerName: "Nimal F.",
+            date: "2025-07-01",
+            rating: 9.2,
+            text: "Fantastic experience! The eco-friendly initiatives are impressive, and the service was top-notch."
+        },
+        {
+            id: 5,
+            reviewerName: "Sarah M.",
+            date: "2025-03-25",
+            rating: 7.5,
+            text: "Good stay overall, but the Wi-Fi was a bit slow at times. Beautiful surroundings though."
+        }
+        ];
+        
+        // Function to generate star icons HTML based on rating
+        function getStarRatingHtml(rating) {
+            let starsHtml = '';
+            const fullStars = Math.floor(rating / 2); // Assuming 1-10 rating, 2 points per star
+            const hasHalfStar = (rating % 2) >= 1; // Check if remainder is 1 or more for half star (e.g., 8.9 -> 4.5 stars)
+            
+            for (let i = 0; i < fullStars; i++) {
+                starsHtml += '<i class="fas fa-star"></i>';
+            }
+            if (hasHalfStar) {
+                starsHtml += '<i class="fas fa-star-half-alt"></i>';
+            }
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                starsHtml += '<i class="far fa-star"></i>'; // Use empty star for remaining
+            }
+            return `<span class="review-stars">${starsHtml}</span>`;
+        }
+        
+        // Function to render reviews
+        function renderReviews(reviews) {
+            customerReviewsContainer.innerHTML = ''; // Clear existing reviews
+            totalReviewsSpan.textContent = reviews.length; // Update total count
+            
+            if (reviews.length === 0) {
+                customerReviewsContainer.innerHTML = '<p class="text-muted text-center py-3">No reviews found.</p>';
+                return;
+            }
+            
+            reviews.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.classList.add('review-card');
+                reviewCard.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="reviewer-name">${review.reviewerName}</div>
+                        <div class="review-date">${new Date(review.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                    </div>
+                    ${getStarRatingHtml(review.rating)}
+                    <p class="review-text">${review.text}</p>
+                `;
+                customerReviewsContainer.appendChild(reviewCard);
+            });
+        }
+        
+        // Function to apply sorting and render reviews
+        function applyReviewSortAndRender() {
+            const sortBy = reviewSortLabel.textContent;
+            let sortedReviews = [...dummyReviews]; // Create a copy to sort
+            
+            if (sortBy === "Newest first") {
+                sortedReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+            } else if (sortBy === "Oldest first") {
+                sortedReviews.sort((a, b) => new Date(a.date) - new Date(b.date));
+            } else if (sortBy === "Highest rating") {
+                sortedReviews.sort((a, b) => b.rating - a.rating);
+            } else if (sortBy === "Lowest rating") {
+                sortedReviews.sort((a, b) => a.rating - b.rating);
+            }
+            renderReviews(sortedReviews);
+        }
+        
+        // Event listeners for review sort dropdown items
+        reviewSortDropdownItems.forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.preventDefault();
+                reviewSortLabel.textContent = this.dataset.value;
+                applyReviewSortAndRender();
+            });
+        });
+        
+        // Initial render of reviews on page load
+        applyReviewSortAndRender();
+    });
+</script>
+</body>
+</html>

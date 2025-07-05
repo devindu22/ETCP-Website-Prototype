@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register Your Property | ETCP</title>
+  
+  <link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+  />
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  crossorigin="anonymous"
+  />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  />
+  <link rel="icon" href="img/favicon_io/favicon.ico" type="image/x-icon">
+  
+  <style>
+    /* ===== Variables ===== */
+    :root {
+      --primary-green: #28a745;
+      --navbar-bg: #28a745;
+      --text-dark: #333;
+      --hover-green: #218838;
+      --light-bg: #f8f9fa; /* Slightly lighter for background */
+      --card-bg: #fff;
+      --border-color: #e0e0e0;
+      --shadow-light: rgba(0, 0, 0, 0.08);
+      --gradient-start: #28a745; 
+      --gradient-end: #00e6ac;   
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background-color: var(--light-bg); 
+      padding-top: 70px; /* Space for fixed navbar */
+      margin: 0;
+    }
+    
+    a { text-decoration: none; }
+    
+    /* ===== Navbar ===== */
+    .navbar {
+      background: var(--navbar-bg);
+      transition: padding 0.3s;
+      padding: 1rem;
+    }
+    .navbar.navbar-shrink { padding: .25rem 1rem; }
+    .nav-link {
+      color: #fff!important;
+      position: relative;
+      transition: color .2s;
+      font-weight: 500;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute; bottom:0; left:50%;
+      width:0; height:2px;
+      background:#fff;
+      transform:translateX(-50%);
+      transition: width .3s;
+    }
+    .nav-link:hover::after { width:100%; }
+    .nav-link:hover { color: #e0e0e0!important; }
+    .nav-link.active { font-weight: 600; color: aqua !important; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+    
+    /* Language Dropdown Specific Styling */
+    .navbar-nav .dropdown-toggle {
+      padding-right: 0.75rem !important; /* Adjust padding for dropdown toggle */
+      padding-left: 0.75rem !important;
+    }
+    .navbar-nav .dropdown-toggle img {
+      margin-right: 0.25rem; /* Space between flag and caret */
+    }
+    .dropdown-menu {
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 0.5rem;
+      background-color: #fff; /* Ensure white background for dropdown */
+    }
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      color: var(--text-dark);
+      transition: background-color 0.2s, color 0.2s;
+    }
+    .dropdown-item:hover {
+      background-color: var(--light-bg); /* Using light-bg from index.html variables */
+      color: var(--primary-green);
+    }
+    .dropdown-item img {
+      height: 20px; /* Smaller flags in dropdown */
+      width: 20px;
+      border-radius: 50%;
+      margin-right: 0.75rem;
+      object-fit: cover;
+    }
+    
+    /* Remove underline from language dropdown toggle */
+    .nav-item.dropdown .nav-link::after {
+      width: 0 !important;
+      background: transparent !important;
+    }
+    
+    /* Remove dropdown caret (arrow) */
+    .nav-item.dropdown .dropdown-toggle::after {
+      display: none !important;
+    }
+    
+    /* ===== Original Welcome Section for Register Page ===== */
+    .register-welcome-section {
+      background: linear-gradient(
+      to bottom,
+      var(--navbar-bg),
+      rgba(255, 255, 255, 0) 40%,
+      var(--light-bg) 80%
+      );
+      padding-top: 60px;
+      padding-bottom: 60px;
+      margin-bottom: 2rem; /* Ensure space before next section */
+    }
+    
+    .welcome-image {
+      border-radius: 1rem; /* Using a variable for consistency */
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+    }
+    .welcome-image img {
+      display: block;
+      width: 75%; /* Scaled down by 25% */
+      height: auto;
+      object-fit: cover;
+      /* Ensure the image fits within the aspect ratio of the box */
+      min-height: 250px; /* Adjust as needed for visual balance */
+      margin: 0 auto; /* Center the image */
+    }
+    .welcome-box {
+      background: linear-gradient(
+      to bottom right,
+      rgba(40, 167, 69, 0.9), /* Slightly more opaque */
+      rgba(0, 230, 172, 0.7) /* Using gradient-end variable for consistency */
+      );
+      border-radius: 1rem; /* Using a variable for consistency */
+      padding: 2rem; /* Increased padding */
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    }
+    .welcome-box h3 {
+      margin-top: 0;
+      font-size: 1.8rem; /* Larger heading */
+      font-weight: 700; /* Bolder */
+      margin-bottom: 1rem;
+    }
+    .welcome-box p {
+      margin-bottom: 0.8rem; /* More spacing between paragraphs */
+      font-size: 1rem; /* Slightly larger font */
+      line-height: 1.6;
+      color: #f0fdfa;
+    }
+    
+    /* ===== Why Partner Section ===== */
+    .why-partner {
+      background-color: var(--card-bg);
+      border-radius: 1rem;
+      padding: 3rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 10px var(--shadow-light);
+      text-align: center;
+    }
+    .why-partner h3 {
+      color: var(--primary-green);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
+    }
+    .why-partner .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+    }
+    .why-partner .feature-item i {
+      font-size: 3rem;
+      color: var(--primary-green);
+      margin-bottom: 1rem;
+      animation: bounceIn .8s ease-out; 
+    }
+    .why-partner .feature-item h5 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* ===== Register CTA Banner ===== */
+    .register-cta-banner {
+      background: linear-gradient(90deg, var(--gradient-end), var(--primary-green)); /* Green to teal gradient */
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      animation: fadeInUp 1s ease-out forwards; /* Reuse fadeInUp animation */
+      animation-delay: 0.2s;
+    }
+    .register-cta-banner h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    .register-cta-banner p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+    
+    /* ===== Form Card Sections ===== */
+    .form-card-section {
+      background-color: var(--card-bg);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      margin-bottom: 2rem; 
+      box-shadow: 0 4px 10px var(--shadow-light);
+    }
+    .form-card-section h4 {
+      color: var(--primary-green);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--primary-green);
+      padding-bottom: 0.75rem;
+      display: inline-block; 
+    }
+    
+    /* Custom Input Styling */
+    .form-control {
+      border-radius: 0.5rem;
+      border: 1px solid var(--border-color);
+      padding: 0.75rem 1rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-control:focus {
+      border-color: var(--primary-green);
+      box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); 
+    }
+    
+    /* File Upload Area */
+    .upload-box {
+      border: 2px dashed var(--primary-green);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      color: var(--primary-green);
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .upload-box:hover {
+      background-color: #e6ffe6; 
+      border-color: var(--hover-green);
+    }
+    .upload-box i {
+      font-size: 3.5rem; 
+      margin-bottom: 1rem;
+      display: block; 
+    }
+    .upload-box p {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+    
+    /* Submit Button */
+    .btn-primary {
+      background-color: var(--primary-green);
+      border-color: var(--primary-green);
+      padding: 0.8rem 2rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .btn-primary:hover {
+      background-color: var(--hover-green);
+      border-color: var(--hover-green);
+      transform: translateY(-2px); 
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+    
+    /* Form validation styling (Bootstrap default) */
+    .needs-validation .form-control:invalid:focus {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+    }
+    .needs-validation .form-control:valid:focus {
+      border-color: #198754;
+      box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+    }
+    
+    /* ===== Footer ===== */
+    footer {
+      background-color: #2c3e50; 
+      color: #ecf0f1; 
+      padding: 40px 0;
+      font-size: 0.9rem;
+    }
+    .footer-links a { display:block; color:#ecf0f1; margin:.25rem 0; transition:color .2s; }
+    .footer-links a:hover { color: var(--primary-green); }
+    .social-icons a {
+      color:#ecf0f1; margin-right:.75rem;
+      transition: transform .2s, color .2s;
+    }
+    .social-icons a:hover {
+      color: var(--primary-green);
+      transform: scale(1.1);
+    }
+    .footer-bottom { text-align:center; margin-top:1.5rem; font-size:.8rem; color: rgba(255,255,255,.7); }
+    footer img { filter: brightness(0) invert(1); }
+    
+    /* ===== Animations ===== */
+    .animate-on-scroll {
+      opacity:0;
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .animate-on-scroll.from-top { transform: translateY(-30px); }
+    .animate-on-scroll.in-view {
+      opacity:1;
+      transform: translate(0,0);
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    /* Keyframe for fadeInUp for hero content */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Keyframe for animated gradient background (kept for potential future use if needed) */
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .register-welcome-section {
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+      .welcome-box h3 { font-size: 1.5rem; }
+      .welcome-box p { font-size: 0.9rem; }
+      .why-partner { padding: 2rem 1rem; }
+      .why-partner .feature-item i { font-size: 2.5rem; }
+      .form-card-section { padding: 1.5rem; }
+      .form-card-section h4 { font-size: 1.5rem; margin-bottom: 1rem; }
+      .upload-box i { font-size: 2.5rem; }
+      .upload-box p { font-size: 1rem; }
+      .register-cta-banner h2 { font-size: 1.8rem; }
+      .register-cta-banner p { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="ETCP" height="40"></a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="register.html">Register your property</a></li>
+          <li class="nav-item"><a class="nav-link" href="plan.html">Plan your trip</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <!-- Language Dropdown - Added to register.html -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguage" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="img/flag.png" alt="Sri Lankan Flag" style="height:24px; border-radius:50%;" />
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownLanguage">
+              <li><a class="dropdown-item" href="#"><img src="img/flag.png" alt="English Flag" /> English</a></li>
+              <li><a class="dropdown-item" href="#"><img src="img/srilanka.png" alt="Sri Lankan Flag" /> Sinhala</a></li>
+              <li><a class="dropdown-item" href="#"><img src="img/russia.webp" alt="Russian Flag" /> Russian</a></li>
+              <li><a class="dropdown-item" href="#"><img src="img/spain.png" alt="Spanish Flag" /> Spanish</a></li>
+              <li><a class="dropdown-item" href="#"><img src="img/uae.png" alt="Arabic Flag" /> Arabic</a></li>
+              <li><a class="dropdown-item" href="#"><img src="img/china.png" alt="Chinese Flag" /> Chinese</a></li>
+              <li><a class="dropdown-item" href="#"><img src="img/japan.png" alt="Japanese Flag" /> Japanese</a></li>
+              <li><a class="dropdown-item" href="#"><img src="img/france.png" alt="French Flag" /> French</a></li>
+              <li><a class="dropdown-item" href="#"><img src="img/Italy.webp" alt="Italian Flag" /> Italian</a></li>
+              <li><a class="dropdown-item" href="#"><img src="img/indian.png" alt="Hindi Flag" /> Hindi</a></li>
+              <li><a class="dropdown-item" href="#"><img src="img/Germany.webp" alt="German Flag" /> German</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="signin.html">Sign in</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- ===== Welcome Section (Original) ===== -->
+  <section class="register-welcome-section">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <!-- Left: large image -->
+        <div class="col-md-6 animate-on-scroll" data-anim="left">
+          <div class="welcome-image">
+            <!-- Ensure this image exists in your img/ folder -->
+            <img src="img/welcome - image.jpg" alt="Eco property preview"/>
+          </div>
+        </div>
+        <!-- Right: welcome box -->
+        <div class="col-md-6 animate-on-scroll" data-anim="right">
+          <div class="welcome-box">
+            <h3>Welcome to ETCP</h3>
+            <p><strong>Elevate Your Eco-Property Success!</strong></p>
+            <p>
+              Unlock the full potential of your eco-friendly property with ETCP, the world’s leading cloud-based
+              platform designed to connect visionary hosts like you with eco-conscious travellers worldwide.
+            </p>
+            <p>
+              Developed by a pioneering Sri Lankan start-up, ETCP empowers you to showcase your sustainable lodge,
+              tour, or conservation project to a global audience.
+            </p>
+            <p>
+              Register today and enjoy seamless management of bookings, detailed visitor analytics, and secure
+              payments—all while highlighting your commitment to sustainability.
+            </p>
+            <p>
+              Join the Eco-Explorer Network (EEN) and turn your passion for the planet into a thriving business.
+              Don’t miss out! List your property now and watch your eco-tourism dreams flourish!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <main class="container">
+    <section class="why-partner animate-on-scroll" data-anim="top">
+      <h3>Why Partner with ETCP?</h3>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-4 col-sm-6">
+          <div class="feature-item">
+            <i class="fas fa-globe"></i>
+            <h5>Global Reach</h5>
+            <p>Showcase your property to an international audience passionate about sustainable travel.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="feature-item">
+            <i class="fas fa-leaf"></i>
+            <h5>Sustainability Focused</h5>
+            <p>Highlight your eco-friendly practices and attract like-minded guests.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="feature-item">
+            <i class="fas fa-handshake"></i>
+            <h5>Exclusive Network</h5>
+            <p>Join a curated community of premium eco-tourism providers.</p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- New Register CTA Banner -->
+  <section class="register-cta-banner animate-on-scroll" data-anim="top">
+    <h2>Register Your Property Today!</h2>
+    <p>Complete the form below to begin your partnership with ETCP and showcase your unique eco-property to the world.</p>
+  </section>
+  
+  <form id="propertyForm" class="needs-validation" novalidate>
+    <section class="form-card-section animate-on-scroll" data-anim="top">
+      <h4><i class="fas fa-building me-2"></i> Property Information</h4>
+      <div class="row g-3 mt-3">
+        <div class="col-md-6">
+          <label for="propName" class="form-label">Property Name</label>
+          <input type="text" class="form-control" id="propName" required>
+          <div class="invalid-feedback">Please enter property name.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="propAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" id="propAddress" required>
+          <div class="invalid-feedback">Please enter property address.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="propDistrict" class="form-label">District</label>
+          <input type="text" class="form-control" id="propDistrict" required>
+          <div class="invalid-feedback">Please enter district.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="propProvince" class="form-label">Province</label>
+          <input type="text" class="form-control" id="propProvince" required>
+          <div class="invalid-feedback">Please enter province.</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="form-card-section animate-on-scroll" data-anim="top">
+      <h4><i class="fas fa-user-tie me-2"></i> Contact Information</h4>
+      <div class="row g-3 mt-3">
+        <div class="col-md-6">
+          <label for="propContact" class="form-label">Contact Number</label>
+          <input type="tel" class="form-control" id="propContact" required pattern="[0-9]{10}">
+          <div class="invalid-feedback">Please enter a valid 10-digit contact number.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="propEmail" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="propEmail" required>
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="form-card-section animate-on-scroll" data-anim="top">
+      <h4><i class="fas fa-camera-retro me-2"></i> Media & Documents</h4>
+      <div class="row g-3 mt-3">
+        <div class="col-md-6">
+          <label for="propPhotos" class="form-label">Property Photos</label>
+          <div class="upload-box">
+            <i class="fas fa-cloud-arrow-up"></i>
+            <p>Drag & drop photos here or click to browse</p>
+            <input type="file" class="form-control d-none" id="propPhotos" multiple accept="image/*">
+          </div>
+          <small class="form-text text-muted mt-2">Upload high-resolution images (max 10MB per file).</small>
+        </div>
+        <div class="col-md-6">
+          <label for="propVideos" class="form-label">Property Videos (Optional)</label>
+          <div class="upload-box">
+            <i class="fas fa-video"></i>
+            <p>Drag & drop videos here or click to browse</p>
+            <input type="file" class="form-control d-none" id="propVideos" multiple accept="video/*">
+          </div>
+          <small class="form-text text-muted mt-2">Optional: Upload a short video tour (max 50MB per file).</small>
+        </div>
+      </div>
+    </section>
+    
+    <div class="text-center mt-5 mb-5 animate-on-scroll" data-anim="top">
+      <button type="submit" class="btn btn-primary">Register Your Property</button>
+      <p class="text-muted mt-3"><small>Your data is secured and kept confidential.</small></p>
+    </div>
+  </form>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <img src="img/logo.png" alt="ETCP logo" style="width:120px; height:auto;">
+        <p>The ETCP is an innovative cloud-based platform designed to revolutionize the way eco-conscious travellers discover, plan, and engage with eco-tourism experiences worldwide.</p>
+      </div>
+      <div class="col-md-2 footer-links"><h6>Discover</h6><a href="#">Home</a><a href="#">Features</a></div>
+      <div class="col-md-2 footer-links"><h6>Support</h6><a href="#">Help Center</a><a href="#">FAQs</a><a href="#">Contact Support</a></div>
+      <div class="col-md-2 footer-links"><h6>Partners</h6><a href="#">Become a Provider</a><a href="#">Affiliates</a></div>
+      <div class="col-md-2 footer-links"><h6>Legal</h6><a href="#">Terms & Settings</a><a href="#">Privacy Policy</a><a href="#">Contact Us</a></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col text-center social-icons">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom text-center mt-2">
+      <p>Copyright © 2025 ETCP.com™. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="modal fade" id="registrationSuccessModal" tabindex="-1" aria-labelledby="registrationSuccessModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="registrationSuccessModalLabel"><i class="fas fa-check-circle me-2"></i> Registration Submitted Successfully!</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center py-4">
+        <p class="lead">Thank you for registering your property with ETCP!</p>
+        <p>An ETCP agent will contact you shortly (within 2-3 business days) to gather more detailed information and guide you through the next steps.</p>
+        <p class="text-muted small mt-3">We look forward to partnering with you to promote sustainable eco-tourism.</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+crossorigin="anonymous"
+></script>
+
+<script>
+  // ===== Navbar shrink on scroll =====
+  const navbar = document.getElementById('mainNavbar');
+  function checkScroll() {
+    if (window.scrollY > 50) {
+      navbar.classList.add('navbar-shrink');
+    } else {
+      navbar.classList.remove('navbar-shrink');
+    }
+  }
+  document.addEventListener('scroll', checkScroll);
+  checkScroll(); // Initial check on load
+  
+  // ===== Intersection Observer for scroll animations =====
+  document.addEventListener('DOMContentLoaded', function() {
+    const animatedEls = document.querySelectorAll(".animate-on-scroll");
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.2, // Trigger when 20% of the element is visible
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+        } else {
+          entry.target.classList.remove("in-view");
+        }
+      });
+    }, options);
+    animatedEls.forEach((el) => observer.observe(el));
+    
+    // Handle click on upload boxes to trigger file input
+    document.querySelectorAll('.upload-box').forEach(box => {
+      box.addEventListener('click', function() {
+        this.querySelector('input[type="file"]').click();
+      });
+    });
+    // Prevent immediate validation message on page load for file inputs
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+      input.addEventListener('invalid', function(event) {
+        event.preventDefault(); // Prevent default browser validation message
+      });
+    });
+  });
+  
+  // ===== Form submission handling =====
+  document.getElementById("propertyForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent default form submission
+    
+    const form = e.target;
+    // Bootstrap's custom validation styles
+    if (!form.checkValidity()) {
+      form.classList.add("was-validated");
+      const firstInvalid = form.querySelector(':invalid');
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return; // Stop if form is invalid
+    }
+    
+    // If form is valid, simulate submission and show modal
+    console.log("Registering property...");
+    
+    // Get the modal element and create a Bootstrap Modal instance
+    const registrationModal = new bootstrap.Modal(document.getElementById('registrationSuccessModal'));
+    registrationModal.show(); // Show the modal
+    
+    // Optionally reset form and remove validation styling after showing modal
+    form.reset();
+    form.classList.remove("was-validated"); 
+  });
+</script>
+</body>
+</html>
